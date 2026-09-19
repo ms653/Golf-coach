@@ -1,12 +1,15 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { getLessons, getLessonById, getDrillById, formatDate } from "@/lib/data";
+import {
+  getLessons,
+  getLessonById,
+  getDrillById,
+  formatDate,
+  staticParamsFor,
+} from "@/lib/data";
 
 export function generateStaticParams() {
-  const lessons = getLessons();
-  // `output: export` requires at least one static param per dynamic route.
-  if (lessons.length === 0) return [{ id: "_none" }];
-  return lessons.map((l) => ({ id: l.id }));
+  return staticParamsFor(getLessons());
 }
 
 export default function LessonDetailPage({

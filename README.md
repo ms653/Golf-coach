@@ -1,7 +1,7 @@
 # Golf Progress Tracker
 
 A personal app that connects lessons → practice → results over time.
-Next.js 14 (App Router, static export), Tailwind CSS, Zustand. Data lives
+Next.js 14 (App Router, static export), Tailwind CSS. Data lives
 in `/data/*.json`, edited by Claude Code and committed to this repo — no
 external database, no login.
 

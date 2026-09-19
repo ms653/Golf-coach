@@ -1,14 +1,15 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { getSessions, getSessionById, formatDate } from "@/lib/data";
+import {
+  getSessions,
+  getSessionById,
+  formatDate,
+  staticParamsFor,
+} from "@/lib/data";
 import MarkCompleteForm from "@/components/MarkCompleteForm";
 
 export function generateStaticParams() {
-  const sessions = getSessions();
-  // `output: export` requires at least one static param per dynamic route,
-  // so fall back to a placeholder when there are no sessions logged yet.
-  if (sessions.length === 0) return [{ id: "_none" }];
-  return sessions.map((s) => ({ id: s.id }));
+  return staticParamsFor(getSessions());
 }
 
 export default function SessionDetailPage({

@@ -25,7 +25,10 @@ on the relevant lesson, not as a new page or file).
    day, or they reference "today's lesson" / "the lesson video"), append to
    that lesson's `video_review_notes` instead of creating a duplicate entry.
    Otherwise create a new lesson entry with id `l-YYYY-MM-DD` (use today's
-   date unless the user states otherwise).
+   date unless the user states otherwise). If a lesson with that exact id
+   already exists and this is genuinely a second, distinct lesson the same
+   day, suffix the id (`l-YYYY-MM-DD-b`, `-c`, ...) rather than overwriting
+   the earlier one.
 3. **Fill the lesson fields**:
    - `coach`: default to the coach name already in `CLAUDE.md` unless the
      user names someone else.

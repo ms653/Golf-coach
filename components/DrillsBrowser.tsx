@@ -1,7 +1,7 @@
 "use client";
 
+import { useState } from "react";
 import type { Drill } from "@/lib/types";
-import { useDrillFilterStore } from "@/store/filters";
 
 export default function DrillsBrowser({
   drills,
@@ -10,7 +10,7 @@ export default function DrillsBrowser({
   drills: Drill[];
   faults: string[];
 }) {
-  const { faultFilter, setFaultFilter } = useDrillFilterStore();
+  const [faultFilter, setFaultFilter] = useState<string | null>(null);
 
   const filtered = faultFilter
     ? drills.filter((d) => d.target_faults.includes(faultFilter))

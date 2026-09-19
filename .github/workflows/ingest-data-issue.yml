@@ -12,6 +12,11 @@ concurrency:
   group: data-ingest
   cancel-in-progress: false
 
+env:
+  # Single source of truth for the branch this workflow reads/writes —
+  # referenced by both the checkout and commit-and-push steps below.
+  BRANCH: main
+
 jobs:
   ingest:
     # Repo is public (required for free GitHub Pages), so anyone can open an
@@ -20,13 +25,13 @@ jobs:
     # data. Update this login if you ever add a trusted collaborator.
     if: >
       github.event.issue.user.login == 'ms653' &&
-      contains(github.event.issue.body, '<!-- golf-coach-data -->')
+      contains(github.event.issue.body, '<!-- golf-coach-data:start -->')
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          ref: main
+          ref: ${{ env.BRANCH }}
 
       - name: Set up Node
         uses: actions/setup-node@v4
@@ -41,7 +46,6 @@ jobs:
 
       - name: Commit and push
         env:
-          BRANCH: main
           FILE: ${{ steps.ingest.outputs.file }}
           TARGET: ${{ steps.ingest.outputs.target }}
           OPERATION: ${{ steps.ingest.outputs.operation }}
@@ -64,11 +68,12 @@ jobs:
         with:
           script: |
             const file = "${{ steps.ingest.outputs.file }}";
+            const branch = "${{ env.BRANCH }}";
             await github.rest.issues.createComment({
               owner: context.repo.owner,
               repo: context.repo.repo,
               issue_number: context.issue.number,
-              body: `✅ Logged to \`${file}\` and pushed to \`main\`. The site will redeploy shortly.`,
+              body: `✅ Logged to \`${file}\` and pushed to \`${branch}\`. The site will redeploy shortly.`,
             });
             await github.rest.issues.update({
               owner: context.repo.owner,

@@ -1,15 +1,15 @@
 "use client";
 
 import Link from "next/link";
-import { useMemo } from "react";
-import { useSessionPlannerStore } from "@/store/sessionPlanner";
+import { useMemo, useState } from "react";
 import { generateSessionPlan, getDrillById } from "@/lib/data";
 import DraftNotice from "@/components/DraftNotice";
 import CopyJsonButton from "@/components/CopyJsonButton";
 import SubmitIssueButton from "@/components/SubmitIssueButton";
 
 export default function PlanSessionPage() {
-  const { focus, ballCount, setFocus, setBallCount } = useSessionPlannerStore();
+  const [focus, setFocus] = useState("sequencing-over-the-top");
+  const [ballCount, setBallCount] = useState(100);
 
   const blocks = useMemo(
     () => generateSessionPlan(focus, ballCount),

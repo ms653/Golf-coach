@@ -1,13 +1,36 @@
 "use client";
 
 import Link from "next/link";
-import { useLessonDraftStore } from "@/store/lessonDraft";
+import { useState } from "react";
 import DraftNotice from "@/components/DraftNotice";
 import CopyJsonButton from "@/components/CopyJsonButton";
 import SubmitIssueButton from "@/components/SubmitIssueButton";
 
+interface LessonDraft {
+  date: string;
+  coach: string;
+  notes: string;
+  cues: string;
+  fault_focus: string;
+  drills_recommended: string;
+  video_review_notes: string;
+}
+
+const emptyDraft: LessonDraft = {
+  date: new Date().toISOString().slice(0, 10),
+  coach: "Adrian Saxton",
+  notes: "",
+  cues: "",
+  fault_focus: "",
+  drills_recommended: "",
+  video_review_notes: "",
+};
+
 export default function AddLessonPage() {
-  const { draft, update, reset } = useLessonDraftStore();
+  const [draft, setDraft] = useState<LessonDraft>(emptyDraft);
+  const update = (patch: Partial<LessonDraft>) =>
+    setDraft((d) => ({ ...d, ...patch }));
+  const reset = () => setDraft(emptyDraft);
 
   const payload = {
     id: `l-${draft.date}`,

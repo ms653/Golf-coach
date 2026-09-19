@@ -16,6 +16,19 @@ import type {
   TrainingPlan,
 } from "@/lib/types";
 
+/**
+ * `output: export` requires generateStaticParams() to return at least one
+ * param per dynamic route, so every [id] page falls back to a placeholder
+ * when its underlying list is empty. Centralized here so the workaround
+ * (and the eventual Next.js quirk it's for) lives in exactly one place.
+ */
+export function staticParamsFor<T extends { id: string }>(
+  items: T[]
+): { id: string }[] {
+  if (items.length === 0) return [{ id: "_none" }];
+  return items.map((item) => ({ id: item.id }));
+}
+
 export function getLessons(): Lesson[] {
   return [...(lessonsData.lessons as Lesson[])].sort((a, b) =>
     b.date.localeCompare(a.date)
@@ -149,49 +162,61 @@ export function generateSessionPlan(
     drill: 0.35,
     transfer: 0.2,
     pressure: 0.1,
-    cooldown: 0.05,
   };
+
+  const warmup = roundToFive(ballCount * split.warmup);
+  const feel = roundToFive(ballCount * split.feel);
+  const drill = roundToFive(ballCount * split.drill);
+  const transfer = roundToFive(ballCount * split.transfer);
+  const pressure = roundToFive(ballCount * split.pressure);
+  // Cool-down absorbs whatever's left so the blocks always sum to exactly
+  // ballCount, instead of each block's independent rounding drifting the
+  // total away from what the user actually asked for.
+  const cooldown = Math.max(
+    5,
+    ballCount - (warmup + feel + drill + transfer + pressure)
+  );
 
   return [
     {
       name: "Warm-up",
       club: "wedge",
-      balls: roundToFive(ballCount * split.warmup),
+      balls: warmup,
       drills: [],
       focus_note: "Loosen up, half-speed swings, no target focus yet.",
     },
     {
       name: "Feel work",
       club: "7i",
-      balls: roundToFive(ballCount * split.feel),
+      balls: feel,
       drills: drillNames.slice(0, 1),
       focus_note: `Slow, exaggerated reps building the feel for: ${focus}.`,
     },
     {
       name: "Drill work",
       club: "7i",
-      balls: roundToFive(ballCount * split.drill),
+      balls: drill,
       drills: drillNames,
       focus_note: `Full-speed reps of the drill(s) targeting: ${focus}.`,
     },
     {
       name: "Transfer",
       club: "7i",
-      balls: roundToFive(ballCount * split.transfer),
+      balls: transfer,
       drills: [],
       focus_note: "Normal full swings, carrying the drill feel into a real swing.",
     },
     {
       name: "Pressure test",
       club: "7i",
-      balls: roundToFive(ballCount * split.pressure),
+      balls: pressure,
       drills: [],
       focus_note: "Pick a target, score makes/misses, simulate on-course pressure.",
     },
     {
       name: "Cool-down",
       club: "wedge",
-      balls: roundToFive(ballCount * split.cooldown),
+      balls: cooldown,
       drills: [],
       focus_note: "Easy short-game shots to finish, no swing thoughts.",
     },

@@ -3,15 +3,17 @@
 // GitHub Issue" buttons) and applies it to the matching /data/*.json file.
 //
 // Expects env var ISSUE_BODY containing the raw issue body text, which must
-// contain a fenced ```json ... ``` block with an envelope of the shape:
+// contain the envelope JSON between the golf-coach-data start/end markers:
 //   { target, operation: "append" | "update", id?, data }
 //
 // Writes GitHub Actions step outputs: file, target, operation, id.
 
 import { readFileSync, writeFileSync } from "node:fs";
 import { resolve } from "node:path";
+import { randomUUID } from "node:crypto";
 
-const MARKER = "<!-- golf-coach-data -->";
+const START_MARKER = "<!-- golf-coach-data:start -->";
+const END_MARKER = "<!-- golf-coach-data:end -->";
 
 const TARGETS = {
   lessons: { file: "data/lessons.json", key: "lessons" },
@@ -27,26 +29,90 @@ function fail(message) {
   process.exit(1);
 }
 
+// GitHub Actions requires the multiline delimiter syntax for any output
+// value that might contain a newline, otherwise it corrupts $GITHUB_OUTPUT.
 function setOutput(name, value) {
   const outFile = process.env.GITHUB_OUTPUT;
   if (!outFile) return;
-  writeFileSync(outFile, `${name}=${value}\n`, { flag: "a" });
+  const delimiter = `ghadelim_${randomUUID()}`;
+  writeFileSync(outFile, `${name}<<${delimiter}\n${value}\n${delimiter}\n`, {
+    flag: "a",
+  });
+}
+
+function deepEqual(a, b) {
+  if (a === b) return true;
+  if (typeof a !== typeof b || a === null || b === null) return false;
+  if (typeof a !== "object") return false;
+  if (Array.isArray(a) !== Array.isArray(b)) return false;
+  const aKeys = Object.keys(a);
+  const bKeys = Object.keys(b);
+  if (aKeys.length !== bKeys.length) return false;
+  return aKeys.every((k) => deepEqual(a[k], b[k]));
+}
+
+/** Finds the next unused id by suffixing -b, -c, ... onto the base id. */
+/**
+ * Finds the first complete top-level {...} JSON object within a string,
+ * respecting string-literal boundaries so braces inside quoted values
+ * (or surrounding prose/markdown fences) don't confuse the depth count.
+ */
+function extractJsonObject(text) {
+  const start = text.indexOf("{");
+  if (start === -1) return null;
+  let depth = 0;
+  let inString = false;
+  let escapeNext = false;
+  for (let i = start; i < text.length; i++) {
+    const ch = text[i];
+    if (escapeNext) {
+      escapeNext = false;
+      continue;
+    }
+    if (ch === "\\") {
+      escapeNext = true;
+      continue;
+    }
+    if (ch === '"') {
+      inString = !inString;
+      continue;
+    }
+    if (inString) continue;
+    if (ch === "{") depth++;
+    else if (ch === "}") {
+      depth--;
+      if (depth === 0) return text.slice(start, i + 1);
+    }
+  }
+  return null;
+}
+
+function nextAvailableId(list, baseId) {
+  const suffixes = "bcdefghijklmnopqrstuvwxyz";
+  for (const suffix of suffixes) {
+    const candidate = `${baseId}-${suffix}`;
+    if (!list.some((item) => item.id === candidate)) return candidate;
+  }
+  fail(`could not find an available id derived from "${baseId}"`);
 }
 
 const body = process.env.ISSUE_BODY || "";
 
-if (!body.includes(MARKER)) {
-  fail("issue body is missing the golf-coach-data marker");
+const startIndex = body.indexOf(START_MARKER);
+const endIndex = body.indexOf(END_MARKER);
+if (startIndex === -1 || endIndex === -1 || endIndex < startIndex) {
+  fail("issue body is missing the golf-coach-data start/end markers");
 }
 
-const fenceMatch = body.match(/```json\s*([\s\S]*?)\s*```/);
-if (!fenceMatch) {
-  fail("no ```json fenced block found in issue body");
+const span = body.slice(startIndex + START_MARKER.length, endIndex);
+const jsonText = extractJsonObject(span);
+if (!jsonText) {
+  fail("no JSON object found between the golf-coach-data markers");
 }
 
 let envelope;
 try {
-  envelope = JSON.parse(fenceMatch[1]);
+  envelope = JSON.parse(jsonText);
 } catch (err) {
   fail(`could not parse JSON envelope: ${err.message}`);
 }
@@ -83,13 +149,21 @@ if (!Array.isArray(parsed[key])) {
 
 const list = parsed[key];
 let effectiveOperation = operation;
+let effectiveId = id;
 
 if (operation === "append") {
   const existingIndex = data.id ? list.findIndex((item) => item.id === data.id) : -1;
-  if (existingIndex >= 0) {
-    // Same id already present (e.g. a resubmission) — merge instead of duplicating.
-    Object.assign(list[existingIndex], data);
-    effectiveOperation = "update";
+  if (existingIndex >= 0 && deepEqual(list[existingIndex], data)) {
+    // Byte-for-byte identical to what's already there — a true resubmission
+    // (e.g. a double-click or a retried request), safe to no-op.
+    effectiveOperation = "resubmission (no changes)";
+  } else if (existingIndex >= 0) {
+    // Same id but different content — a genuinely distinct entry that
+    // collided (e.g. two sessions logged the same day). Give it a new id
+    // rather than silently overwriting the earlier entry.
+    const newId = nextAvailableId(list, data.id);
+    list.push({ ...data, id: newId });
+    effectiveId = newId;
   } else {
     list.push(data);
   }
@@ -103,9 +177,11 @@ if (operation === "append") {
 
 writeFileSync(filePath, JSON.stringify(parsed, null, 2) + "\n");
 
-console.log(`ingest-issue: ${effectiveOperation} applied to ${file} (id: ${id ?? data.id ?? "n/a"})`);
+console.log(
+  `ingest-issue: ${effectiveOperation} applied to ${file} (id: ${effectiveId ?? data.id ?? "n/a"})`
+);
 
 setOutput("file", file);
 setOutput("target", target);
 setOutput("operation", effectiveOperation);
-setOutput("id", id ?? data.id ?? "");
+setOutput("id", effectiveId ?? data.id ?? "");

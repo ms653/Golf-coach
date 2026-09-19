@@ -35,15 +35,21 @@ first, then follows these same steps to persist the plan.
    the current week's `theme` inform the session's focus/drill choice
    rather than ignoring it.
 4. **Build the six blocks** (warm-up, feel work, drill work, transfer,
-   pressure test, cool-down) splitting the ball count roughly
-   15% / 15% / 35% / 20% / 10% / 5%, rounded to the nearest 5 balls, mirroring
-   the logic in `lib/data.ts`'s `generateSessionPlan`. Each block needs
-   `club`, `balls`, `drills` (ids, empty array where not drill-specific), and
-   a one-line `focus_note`.
+   pressure test, cool-down), mirroring `lib/data.ts`'s
+   `generateSessionPlan`: the first five (warm-up 15%, feel work 15%, drill
+   work 35%, transfer 20%, pressure test 10%) are each rounded to the
+   nearest 5 balls, and cool-down takes whatever's left over
+   (`ballCount - sum of the other five`, floored at 5) so the blocks always
+   sum to exactly the ball count requested — don't round cool-down
+   independently, or the total will drift from what the user asked for.
+   Each block needs `club`, `balls`, `drills` (ids, empty array where not
+   drill-specific), and a one-line `focus_note`.
 5. **Write the session** to `/data/sessions.json` with a new id
    `s-YYYY-MM-DD` (today's date, or the date the user specifies), `status:
    "planned"`, empty `post_session_note` (all fields blank/null), and empty
-   `stats_ids`.
+   `stats_ids`. If a session with that exact id already exists (e.g. a
+   second session planned the same day), suffix the id (`-b`, `-c`, ...)
+   rather than overwriting the earlier one.
 6. **Validate** the file is well-formed JSON matching the schema in
    `CLAUDE.md`.
 7. **Commit and push**, e.g. `Plan session: <focus>, <date>`. Routine plans

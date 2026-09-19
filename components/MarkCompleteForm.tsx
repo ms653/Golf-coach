@@ -1,12 +1,26 @@
 "use client";
 
-import { useCompleteSessionStore } from "@/store/sessionPlanner";
+import { useState } from "react";
 import DraftNotice from "@/components/DraftNotice";
 import CopyJsonButton from "@/components/CopyJsonButton";
 import SubmitIssueButton from "@/components/SubmitIssueButton";
 
+interface CompleteSessionDraft {
+  how_it_felt: string;
+  miss_pattern: string;
+  self_rated_success: number | null;
+}
+
+const emptyDraft: CompleteSessionDraft = {
+  how_it_felt: "",
+  miss_pattern: "",
+  self_rated_success: null,
+};
+
 export default function MarkCompleteForm({ sessionId }: { sessionId: string }) {
-  const { draft, update } = useCompleteSessionStore();
+  const [draft, setDraft] = useState<CompleteSessionDraft>(emptyDraft);
+  const update = (patch: Partial<CompleteSessionDraft>) =>
+    setDraft((d) => ({ ...d, ...patch }));
 
   const payload = {
     session_id: sessionId,
@@ -47,9 +61,12 @@ export default function MarkCompleteForm({ sessionId }: { sessionId: string }) {
           min={1}
           max={5}
           className="input"
-          value={draft.self_rated_success}
+          value={draft.self_rated_success ?? ""}
           onChange={(e) =>
-            update({ self_rated_success: Number(e.target.value) })
+            update({
+              self_rated_success:
+                e.target.value === "" ? null : Number(e.target.value),
+            })
           }
         />
       </div>

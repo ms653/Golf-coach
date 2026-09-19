@@ -2,7 +2,7 @@
 
 A personal web app connecting "what the coach said" → "what I practiced" →
 "what changed" over time. Built with Next.js 14 (App Router, static export),
-Tailwind CSS, and Zustand. Data lives in `/data/*.json` in this repo — no
+Tailwind CSS, and plain React state. Data lives in `/data/*.json` in this repo — no
 external database, no auth, single user.
 
 Hosted on GitHub Pages via `.github/workflows/deploy.yml` (builds on push to

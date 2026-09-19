@@ -8,14 +8,11 @@ import {
   getLessonById,
   getSessionById,
   formatDate,
+  staticParamsFor,
 } from "@/lib/data";
 
 export function generateStaticParams() {
-  const reviews = getReviews();
-  // `output: export` requires at least one static param per dynamic route,
-  // so fall back to a placeholder when there are no reviews logged yet.
-  if (reviews.length === 0) return [{ id: "_none" }];
-  return reviews.map((r) => ({ id: r.id }));
+  return staticParamsFor(getReviews());
 }
 
 export default function ReviewDetailPage({

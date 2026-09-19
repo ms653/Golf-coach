@@ -1,7 +1,7 @@
 "use client";
 
+import { useState } from "react";
 import type { StatEntry } from "@/lib/types";
-import { useStatsFilterStore } from "@/store/filters";
 import { formatDate } from "@/lib/data";
 import StatsCharts from "@/components/StatsCharts";
 
@@ -23,7 +23,7 @@ export default function StatsBrowser({
   clubs: string[];
   clubAverages: ClubAverage[];
 }) {
-  const { clubFilter, setClubFilter } = useStatsFilterStore();
+  const [clubFilter, setClubFilter] = useState<string | null>(null);
 
   const filtered = clubFilter
     ? entries.filter((e) => e.club === clubFilter)

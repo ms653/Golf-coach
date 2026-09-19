@@ -17,6 +17,7 @@
 - Cross-references wired between all 8 skills (active plan informs sessions, reviews feed progress, etc.)
 - "How to handle golf conversations" router section in `CLAUDE.md` for trigger-phrase → skill mapping
 - "Submit via GitHub Issue" path on all 3 draft forms: `.github/workflows/ingest-data-issue.yml` parses the submitted payload and writes/commits it automatically, no chat required (Copy-JSON-to-Claude remains as a manual fallback)
+- Hardening pass (code-review + simplify + adversarial design critique): fixed same-day id collisions silently overwriting data, a session-plan rounding bug that drifted from the requested ball count, a fragile JSON-extraction regex, a `$GITHUB_OUTPUT` corruption edge case, a `0`-vs-`null` rating bug, and an issue-URL length risk; removed 3 single-consumer Zustand stores (and the dependency) in favor of local state; centralized the duplicated `generateStaticParams` placeholder workaround and the ingest workflow's branch name. Open design questions the critique raised but weren't acted on unilaterally: whether `reviews.json` should fold into `lessons.json`, whether the GitHub Issue write-path is worth its complexity vs. a small real backend, and whether `golf-session-kickoff` should just be a section of `plan-session`.
 
 ## Phase 3 — ideas, not committed
 

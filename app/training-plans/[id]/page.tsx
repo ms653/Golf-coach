@@ -6,14 +6,11 @@ import {
   getCurrentPlanWeek,
   getSessionById,
   formatDate,
+  staticParamsFor,
 } from "@/lib/data";
 
 export function generateStaticParams() {
-  const plans = getTrainingPlans();
-  // `output: export` requires at least one static param per dynamic route,
-  // so fall back to a placeholder when there are no training plans yet.
-  if (plans.length === 0) return [{ id: "_none" }];
-  return plans.map((p) => ({ id: p.id }));
+  return staticParamsFor(getTrainingPlans());
 }
 
 export default function TrainingPlanDetailPage({

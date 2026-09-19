@@ -5,13 +5,11 @@ import {
   getProgressAreaById,
   faultFrequencyInRecentLessons,
   formatDate,
+  staticParamsFor,
 } from "@/lib/data";
 
 export function generateStaticParams() {
-  const areas = getProgressAreas();
-  // `output: export` requires at least one static param per dynamic route.
-  if (areas.length === 0) return [{ id: "_none" }];
-  return areas.map((a) => ({ id: a.id }));
+  return staticParamsFor(getProgressAreas());
 }
 
 export default function ProgressAreaDetailPage({
