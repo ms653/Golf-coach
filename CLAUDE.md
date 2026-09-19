@@ -15,7 +15,11 @@ session complete) each have two ways to actually persist:
    parses it, updates the right `/data/*.json` file, commits, pushes, and
    closes the issue, usually within a minute. No chat needed. Requires the
    repo's Settings → Actions → General → Workflow permissions be set to
-   "Read and write permissions" (one-time setup).
+   "Read and write permissions" (one-time setup). **The repo is public**
+   (required for free GitHub Pages), so the workflow only processes issues
+   opened by the actual owner account (`ms653`) — anyone else's submission is
+   silently ignored rather than committed. Update that login in the workflow
+   if the owner account ever changes.
 2. **Copy JSON → paste to Claude** (manual) — the same payload, handed to
    Claude in this project instead, where the matching skill below writes and
    commits it. Useful when you'd rather Claude sanity-check the entry first,
@@ -56,6 +60,11 @@ literal instruction to skip the lower body.
 
 ## Context
 
+- **Repo/site visibility:** the repo is public (required for free GitHub
+  Pages), so everything in `/data` — lesson notes, coach's name, swing
+  faults, stats — is world-readable via the repo and the deployed site, not
+  just visible to the owner. Accepted tradeoff for this content; worth
+  knowing before adding anything more sensitive.
 - **Coach:** Adrian Saxton, possibly via "Aos Golf Coaching".
 - **Practice setup:** Toptracer Range at a professional club.
 - **Swing profile:** Fast/powerful swing that's ahead of current

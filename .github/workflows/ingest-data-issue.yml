@@ -14,7 +14,13 @@ concurrency:
 
 jobs:
   ingest:
-    if: contains(github.event.issue.body, '<!-- golf-coach-data -->')
+    # Repo is public (required for free GitHub Pages), so anyone can open an
+    # issue. Only ever process one opened by the actual owner — otherwise a
+    # stranger could submit a crafted payload and have it committed as real
+    # data. Update this login if you ever add a trusted collaborator.
+    if: >
+      github.event.issue.user.login == 'ms653' &&
+      contains(github.event.issue.body, '<!-- golf-coach-data -->')
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
