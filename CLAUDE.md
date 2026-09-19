@@ -12,6 +12,28 @@ plan session, mark session complete) generate a JSON payload you copy and
 hand to Claude in this project, which is what actually writes the file and
 commits it (see Skills below).
 
+## How to handle golf conversations
+
+This file loads automatically whenever a Claude Code session opens in this
+repo. Treat any golf-related message in this project as a reason to check
+this file's "Current focus" and skim the relevant `/data` files before
+responding — even if the user doesn't name a skill explicitly.
+
+| What the user says | What to do |
+|---|---|
+| "heading to the range" / "let's plan today" / "got an hour to hit balls" | `golf-session-kickoff` |
+| "just finished" / "hit balls today" / shares how a session went | `log-session` |
+| "had a lesson" / "coach said" / "Adrian gave me..." | `log-lesson` |
+| Shares a swing video/photo/clip, or describes one | `analyze-swing-video` |
+| Shares a Toptracer/launch monitor screenshot or numbers | `analyze-range-screenshot` |
+| "how am I doing on X" / "am I still coming over the top" | `review-progress` |
+| "what should I work on for the next few weeks" / "give me a plan until my next lesson" | `training-plan` |
+| Anything else golf-related | No skill needed necessarily, but still check current focus + recent lesson/progress before answering, so the answer is grounded in this user's actual data, not generic golf advice |
+
+This routing only fires automatically in a Claude Code session that has
+this repo open — a plain claude.ai chat with no repo context can't see
+these files unless the repo/data is otherwise provided to it.
+
 ## Current focus
 
 **Downswing sequencing / over-the-top.** Starting the downswing with the
@@ -124,7 +146,7 @@ last 6 lessons" — computed at build time from `lessons.fault_focus`).
   description: string;
   timeline: {
     date: string;
-    source: "lesson" | "session" | "stats";
+    source: "lesson" | "session" | "stats" | "review";
     source_id: string;       // id into the source file
     note: string;
   }[];
@@ -147,6 +169,19 @@ Current areas: `sequencing-over-the-top`, `center-face-contact`,
   `status: "planned"`, then commit.
 - **review-progress** — summarize a focus area's timeline of notes/stats,
   highlighting trends or recurring issues.
+- **golf-session-kickoff** — conversational front-end to `plan-session`:
+  reads recent context (focus, last lesson, last session, active training
+  plan), asks a couple of quick questions, then generates and persists a
+  session plan.
+- **analyze-swing-video** — expert analysis of a swing video/photo (or
+  description) shared in chat, grounded in current focus and known fault
+  areas, written to `reviews.json` and `progress.json`.
+- **analyze-range-screenshot** — expert analysis of a Toptracer-style
+  screenshot or reported numbers against baseline/history, written to
+  `stats.json` and `reviews.json`.
+- **training-plan** — generate and maintain a multi-week training plan
+  grounded in recurring lesson/progress patterns, written to
+  `training_plans.json`.
 
 ## Commit policy
 

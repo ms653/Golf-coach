@@ -49,9 +49,16 @@ session detail page.
    summarizing what happened for that area). Only touch the description if
    the user shares something that changes the standing understanding of the
    fault, not just routine practice notes.
-6. **Validate** all touched JSON files are well-formed (matching the shapes
+6. **Check for an active training plan**: if `/data/training_plans.json`
+   exists and has a plan with `status: "active"`, append this session's id
+   into that plan's most recent `weekly_structure` entry's `session_ids`
+   array (matching on week timing loosely — just use whichever week entry
+   is most recent — no need to be precise about exact week boundaries).
+   Don't silently ignore an active plan; a missing file just means there's
+   no plan to update.
+7. **Validate** all touched JSON files are well-formed (matching the shapes
    in `CLAUDE.md`) before writing.
-7. **Commit and push** to the current branch with a concise message, e.g.
+8. **Commit and push** to the current branch with a concise message, e.g.
    `Log range session: <focus>, <date>`. No need to ask first for a routine
    session log — this matches this repo's commit policy in `CLAUDE.md`.
    Ask first only if the description is ambiguous enough that you're

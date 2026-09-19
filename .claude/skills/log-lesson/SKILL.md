@@ -41,16 +41,23 @@ on the relevant lesson, not as a new page or file).
      `step-change-of-direction`); if the coach recommended something not in
      the library, add it there first with a short description and
      reasonable `target_faults`/`clubs`, then reference its id.
-4. **Update `/data/progress.json`**: append a timeline entry for the
+4. **Structured video review vs. quick takeaway**: if the user describes
+   what a video review actually showed (specific positions, faults spotted)
+   rather than a quick one-line takeaway, that should go through
+   `analyze-swing-video` instead of being crammed into `video_review_notes`
+   directly — `video_review_notes` stays for quick takeaways, while
+   `/data/reviews.json` (via `analyze-swing-video`) is for structured
+   analysis.
+5. **Update `/data/progress.json`**: append a timeline entry for the
    matched/created `fault_focus` area (`source: "lesson"`, `source_id` =
    lesson id, a one-line note capturing the cue/fault/drill takeaway).
-5. **Update `CLAUDE.md`**: if this lesson's `fault_focus` differs from the
+6. **Update `CLAUDE.md`**: if this lesson's `fault_focus` differs from the
    current "Current focus" line, rewrite that section to reflect the new
    focus (name, one or two sentences of context, the cue if one was given).
    If it's the same focus continuing, leave the line as-is rather than
    restating it.
-6. **Validate** all touched JSON files are well-formed before writing.
-7. **Commit and push** to the current branch, e.g.
+7. **Validate** all touched JSON files are well-formed before writing.
+8. **Commit and push** to the current branch, e.g.
    `Log lesson: <fault_focus>, <date>`. Routine lesson logs don't need to be
    confirmed first, per this repo's commit policy — ask only if you're
    unsure whether this is a new lesson vs. an addendum to an existing one
