@@ -42,6 +42,12 @@ first, then follows these same steps to persist the plan.
    (`ballCount - sum of the other five`, floored at 5) so the blocks always
    sum to exactly the ball count requested — don't round cool-down
    independently, or the total will drift from what the user asked for.
+   This split follows a blocked-practice → transfer → pressure-test
+   progression (see the comment on `generateSessionPlan`), not an arbitrary
+   ratio. Below roughly 40 balls the six blocks get short enough to feel
+   like busywork rather than real structure — say so to the user and offer
+   a simpler 3-block version (warm-up, drill work, transfer) instead of
+   handing back six 5-ball blocks as if that were a normal session.
    Each block needs `club`, `balls`, `drills` (ids, empty array where not
    drill-specific), and a one-line `focus_note`.
 5. **Write the session** to `/data/sessions.json` with a new id

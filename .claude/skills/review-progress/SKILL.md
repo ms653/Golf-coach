@@ -36,15 +36,24 @@ answered per-area rather than as a flat stats dump.
    `fault_focus` (same logic as the dashboard/progress pages), and whether
    that frequency is rising, flat, or falling over the full lesson history,
    not just the last 6.
-6. **Summarize**, covering:
+6. **Summarize — interpret the pattern, don't just count it.** A frequency
+   number or a restated list of drills isn't a finished summary if it's
+   just repeating what's already visible in the JSON. Specifically:
    - How long this has been a tracked focus (first timeline entry to most
      recent).
-   - What's been tried (drills, cues) and what recurs across entries.
+   - What's been tried (drills, cues) — and explicitly flag it as a finding
+     in its own right if the **same drill or cue has been prescribed more
+     than once without the fault resolving**: that's not neutral history,
+     it's evidence the drill isn't being practiced enough, isn't
+     transferring to real swings, or isn't the right fix — say which of
+     those you suspect and why, rather than just listing "drill X, then
+     drill X again."
    - Any measurable change reflected in stats (e.g. consistency of a
      miss, or numbers trending in the right direction).
    - A clear verdict: improving, plateaued, or worsening — don't hedge past
      what the data actually shows, and say plainly when there isn't enough
-     data yet to call a trend.
+     data yet to call a trend (a single lesson or session is not a trend,
+     say so rather than forcing a verdict).
 7. **Do not modify any files.** If the user then asks to log something new
    based on this review, hand off to `log-lesson` or `log-session` rather
    than writing directly.

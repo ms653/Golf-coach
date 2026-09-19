@@ -139,6 +139,17 @@ function roundToFive(n: number): number {
  * Generates a session plan (warm-up -> feel work -> drill work -> transfer
  * -> pressure test -> cool-down) pulling relevant drills from the library
  * for the given focus (matched against drill target_faults).
+ *
+ * The 15/15/35/20/10% split (+ cool-down absorbing the remainder) follows a
+ * blocked-practice -> transfer -> pressure-test progression: most reps go to
+ * isolating the feel and drilling it (feel + drill = 50%), then a smaller
+ * transfer block moves it into full swings, then a short pressure test
+ * checks whether it holds up under a scoring/target constraint. It's a
+ * reasonable default for this user's typical 80-150 ball sessions, not a
+ * universal law — below roughly 40 balls the blocks get short enough (the
+ * 5-ball floor in roundToFive) that some structure is better collapsed;
+ * `plan-session`/`golf-session-kickoff` should flag that to the user rather
+ * than presenting six tiny blocks as if they were a normal-sized session.
  */
 export function generateSessionPlan(
   focus: string,

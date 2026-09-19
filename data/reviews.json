@@ -4,12 +4,12 @@
       "id": "r-2026-09-12-a",
       "date": "2026-09-12",
       "type": "swing-video",
-      "context": "Down-the-line swing video shared in chat after today's lesson with Adrian.",
+      "context": "Two frames extracted from a down-the-line swing video shared in chat after today's lesson with Adrian — one at the top of the backswing, one just after the start of the downswing — compared side by side to check the sequencing the lesson flagged. (A single frame can't show sequencing; this review is only possible because two transition-bracketing frames were available.)",
       "linked_lesson_id": "l-2026-09-12",
       "linked_session_id": null,
       "observations": [
         {
-          "note": "From the top of the backswing, the arms and shoulders start moving down and out toward the ball before the hips have begun clearing toward the target, consistent with the lesson's diagnosis of the downswing being initiated by the upper body rather than the lower body.",
+          "note": "Comparing the two frames: the arms and shoulders have already moved down and out toward the ball by the second frame, while the hips have barely started clearing toward the target — consistent with the lesson's diagnosis of the downswing being initiated by the upper body rather than the lower body.",
           "fault_area": "sequencing-over-the-top"
         }
       ],

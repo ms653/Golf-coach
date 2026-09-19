@@ -26,10 +26,15 @@ interpreted rather than just filed away raw.
    on a flush hit) and against `/data/stats.json` history for that club, to
    say whether this is consistent with, better than, or worse than the
    recent pattern — don't just restate the raw numbers back.
-4. **Flag any pattern worth a note**: e.g. ball speed implying an unusually
-   low smash factor for the carry shown, high dispersion across multiple
+4. **Flag any pattern worth a note**: high dispersion across multiple
    visible shots, or a launch angle/apex combination that looks off versus
-   their usual numbers.
+   their usual numbers. If — and only if — both ball speed AND club speed
+   are actually shown on screen, you may compute smash factor
+   (ball speed ÷ club speed) as a flag; label it explicitly as calculated
+   ("smash factor works out to X, calculated from the numbers shown"), not
+   as something read off the screen, and never estimate club speed to back
+   into this — Toptracer screens frequently don't show club speed at all,
+   in which case skip this flag entirely rather than guessing at it.
 5. **Write new entries to `/data/stats.json`** in the existing shape (new
    `id` following the `st-YYYY-MM-DD-<club>-<letter>` pattern). If this ties
    to a specific session, ask which one and set `session_id` accordingly;

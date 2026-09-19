@@ -41,6 +41,7 @@ responding — even if the user doesn't name a skill explicitly.
 | Shares a Toptracer/launch monitor screenshot or numbers | `analyze-range-screenshot` |
 | "how am I doing on X" / "am I still coming over the top" | `review-progress` |
 | "what should I work on for the next few weeks" / "give me a plan until my next lesson" | `training-plan` |
+| "prep me for my lesson" / "what should I tell Adrian" / "getting ready to see my coach" | `lesson-prep` |
 | Anything else golf-related | No skill needed necessarily, but still check current focus + recent lesson/progress before answering, so the answer is grounded in this user's actual data, not generic golf advice |
 
 This routing only fires automatically in a Claude Code session that has
@@ -200,6 +201,10 @@ Current areas: `sequencing-over-the-top`, `center-face-contact`,
 - **training-plan** — generate and maintain a multi-week training plan
   grounded in recurring lesson/progress patterns, written to
   `training_plans.json`.
+- **lesson-prep** — read-only, cross-area digest of everything since the
+  last lesson (sessions, stats, reviews, quiet areas) to bring to the next
+  one; distinct from `review-progress`'s single-area, backward-looking
+  summary.
 
 ## Commit policy
 

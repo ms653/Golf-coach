@@ -22,8 +22,17 @@ I work on until my next lesson", "build me a training plan".
    taking the user's word for the focus.
 2. **Default to 2-4 weeks** unless the user specifies a length. Pick a
    `primary_focus` (and optional `secondary_focus`) grounded in that
-   recurrence data, and write a short `rationale` explaining the choice by
-   referencing the actual lessons/progress trend that led to it.
+   recurrence data, and write a short `rationale` explaining the choice —
+   **but only claim a pattern you can actually count.** If the fault has
+   genuinely come up in multiple lessons, say so with the real count ("has
+   come up in 3 of the last 4 lessons"). If it's the only lesson on record
+   so far, say that honestly instead ("this is the current coaching focus
+   from the most recent lesson; not enough lesson history yet to call it a
+   recurring pattern — the plan front-loads foundational work on it because
+   it's what's live right now, not because it's proven persistent"). A
+   confident-sounding rationale that overstates thin evidence is worse than
+   a plain one that's accurate — `review-progress` and future you will read
+   this `rationale` field as if it were a factual claim about the data.
 3. **Build `weekly_structure`** with a `theme` per week that progresses
    logically — e.g. week 1: isolate the feel with slow drill reps; week 2:
    add speed/transfer; week 3: pressure-test on the course or in a

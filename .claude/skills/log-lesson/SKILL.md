@@ -38,7 +38,16 @@ on the relevant lesson, not as a new page or file).
    - `fault_focus`: match an existing id in `/data/progress.json` if the
      fault matches one already tracked; only create a new progress area
      (with a new kebab-case id, name, description, empty timeline) if this
-     is genuinely a new area, not a rewording of an existing one.
+     is genuinely a new area, not a rewording of an existing one. Concrete
+     test: does this fault target a different body part, mechanic, or
+     phase of the swing than any existing area's `description` actually
+     says? If yes, it's new even if it sounds similar in passing (e.g.
+     "grip pressure" is not "sequencing" just because both get mentioned in
+     the same lesson). If you're genuinely unsure which bucket it belongs
+     in, ask the user rather than guessing — silently folding a new fault
+     into an existing area corrupts that area's recurrence tracking in
+     `review-progress` (it'll look like the old fault recurred when it
+     didn't) and is not a call to make on a coin flip.
    - `drills_recommended`: map named drills to ids in `/data/drills.json`
      where they match (fuzzy match on name, e.g. "step drill" →
      `step-change-of-direction`); if the coach recommended something not in
@@ -58,9 +67,26 @@ on the relevant lesson, not as a new page or file).
    current "Current focus" line, rewrite that section to reflect the new
    focus (name, one or two sentences of context, the cue if one was given).
    If it's the same focus continuing, leave the line as-is rather than
-   restating it.
-7. **Validate** all touched JSON files are well-formed before writing.
-8. **Commit and push** to the current branch, e.g.
+   restating it. Before treating a changed focus as a fresh pivot, check
+   whether it's actually a *return* to a fault this user has worked on
+   before (search `/data/progress.json` for an existing area with this id)
+   — if so, say that explicitly ("back to sequencing after two lessons on
+   center-face-contact") rather than presenting it as new; a bare overwrite
+   erases that context and makes normal back-and-forth coaching look like
+   directionless flip-flopping.
+7. **Check for a conflicting active training plan**: if the focus actually
+   changed (per step 6), also read `/data/training_plans.json`. If a plan
+   with `status: "active"` has a `primary_focus`/`secondary_focus` that
+   doesn't match the new `fault_focus`, don't silently leave it running —
+   tell the user in this same turn, e.g. "your lesson just introduced a new
+   focus, but the active N-week plan on <old focus> is still running — mark
+   it completed/abandoned, or keep both going?" and act on their answer
+   (update the plan's `status` and `review_note` if they say to end it).
+   This is the one place two independently-written pieces of memory
+   (CLAUDE.md's current focus and an active plan's stated focus) can drift
+   out of sync with nothing else noticing — don't let it happen silently.
+8. **Validate** all touched JSON files are well-formed before writing.
+9. **Commit and push** to the current branch, e.g.
    `Log lesson: <fault_focus>, <date>`. Routine lesson logs don't need to be
    confirmed first, per this repo's commit policy — ask only if you're
    unsure whether this is a new lesson vs. an addendum to an existing one
