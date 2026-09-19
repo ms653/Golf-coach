@@ -10,6 +10,9 @@
 *.pem
 npm-debug.log*
 
+# Claude Code agent worktree scratch space
+.claude/worktrees/
+
 # env
 .env*.local
 
