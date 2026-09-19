@@ -34,14 +34,21 @@ every push to `main`. In the repo's Settings → Pages, set the source to
 
 ## Logging data
 
-Data entry happens by talking to Claude Code in this project — see the
-`.claude/skills/` folder:
+The app's `/lessons/add`, `/sessions/plan`, and "mark complete" forms each
+produce a JSON payload with two ways to actually persist it, since the
+static site itself has no backend to write files:
 
-- `log-session` — log a completed range session
-- `log-lesson` — log a lesson and update the current focus
-- `plan-session` — generate a session plan from the drill library
-- `review-progress` — summarize progress on a focus area
-
-The app's `/lessons/add`, `/sessions/plan`, and "mark complete" pages are
-convenience forms that produce a JSON payload to copy into chat — the
-static site itself has no backend to write files.
+- **Submit via GitHub Issue** — opens a pre-filled issue;
+  `.github/workflows/ingest-data-issue.yml` parses it, writes the matching
+  `/data/*.json` file, commits, pushes, and closes the issue automatically.
+  Requires Settings → Actions → General → Workflow permissions set to "Read
+  and write permissions" (one-time).
+- **Copy JSON → Claude** — paste the payload (or just describe what
+  happened) to Claude Code in this project; see `.claude/skills/`:
+  - `log-session` — log a completed range session
+  - `log-lesson` — log a lesson and update the current focus
+  - `plan-session` — generate a session plan from the drill library
+  - `review-progress` — summarize progress on a focus area
+  - `golf-session-kickoff`, `analyze-swing-video`, `analyze-range-screenshot`,
+    `training-plan` — see `CLAUDE.md` for the full skill set and the
+    conversational trigger-phrase table.

@@ -3,6 +3,7 @@
 import { useCompleteSessionStore } from "@/store/sessionPlanner";
 import DraftNotice from "@/components/DraftNotice";
 import CopyJsonButton from "@/components/CopyJsonButton";
+import SubmitIssueButton from "@/components/SubmitIssueButton";
 
 export default function MarkCompleteForm({ sessionId }: { sessionId: string }) {
   const { draft, update } = useCompleteSessionStore();
@@ -57,7 +58,16 @@ export default function MarkCompleteForm({ sessionId }: { sessionId: string }) {
         {JSON.stringify(payload, null, 2)}
       </pre>
 
-      <CopyJsonButton value={payload} />
+      <div className="flex flex-wrap gap-2">
+        <SubmitIssueButton
+          target="sessions"
+          operation="update"
+          id={sessionId}
+          data={{ status: payload.status, post_session_note: payload.post_session_note }}
+          titleLabel={`mark complete ${sessionId}`}
+        />
+        <CopyJsonButton value={payload} />
+      </div>
     </div>
   );
 }

@@ -6,6 +6,7 @@ import { useSessionPlannerStore } from "@/store/sessionPlanner";
 import { generateSessionPlan, getDrillById } from "@/lib/data";
 import DraftNotice from "@/components/DraftNotice";
 import CopyJsonButton from "@/components/CopyJsonButton";
+import SubmitIssueButton from "@/components/SubmitIssueButton";
 
 export default function PlanSessionPage() {
   const { focus, ballCount, setFocus, setBallCount } = useSessionPlannerStore();
@@ -91,7 +92,15 @@ export default function PlanSessionPage() {
         <pre className="mb-3 max-h-64 overflow-auto text-xs text-stone-700">
           {JSON.stringify(payload, null, 2)}
         </pre>
-        <CopyJsonButton value={payload} />
+        <div className="flex flex-wrap gap-2">
+          <SubmitIssueButton
+            target="sessions"
+            operation="append"
+            data={payload}
+            titleLabel={`${focus} ${today}`}
+          />
+          <CopyJsonButton value={payload} />
+        </div>
       </div>
     </div>
   );

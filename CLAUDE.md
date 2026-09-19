@@ -6,11 +6,20 @@ Tailwind CSS, and Zustand. Data lives in `/data/*.json` in this repo — no
 external database, no auth, single user.
 
 Hosted on GitHub Pages via `.github/workflows/deploy.yml` (builds on push to
-`main`). Because it's a static export, the app itself cannot write back to
-`/data` from the browser — pages that look like "add" forms (add lesson,
-plan session, mark session complete) generate a JSON payload you copy and
-hand to Claude in this project, which is what actually writes the file and
-commits it (see Skills below).
+`main`). Because it's a static export, the app itself has no server to write
+back to `/data` directly — the "add" forms (add lesson, plan session, mark
+session complete) each have two ways to actually persist:
+
+1. **Submit via GitHub Issue** (automatic) — the button opens a pre-filled
+   GitHub issue containing the same JSON payload; `.github/workflows/ingest-data-issue.yml`
+   parses it, updates the right `/data/*.json` file, commits, pushes, and
+   closes the issue, usually within a minute. No chat needed. Requires the
+   repo's Settings → Actions → General → Workflow permissions be set to
+   "Read and write permissions" (one-time setup).
+2. **Copy JSON → paste to Claude** (manual) — the same payload, handed to
+   Claude in this project instead, where the matching skill below writes and
+   commits it. Useful when you'd rather Claude sanity-check the entry first,
+   or when you're already mid-conversation.
 
 ## How to handle golf conversations
 

@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useLessonDraftStore } from "@/store/lessonDraft";
 import DraftNotice from "@/components/DraftNotice";
 import CopyJsonButton from "@/components/CopyJsonButton";
+import SubmitIssueButton from "@/components/SubmitIssueButton";
 
 export default function AddLessonPage() {
   const { draft, update, reset } = useLessonDraftStore();
@@ -112,7 +113,13 @@ export default function AddLessonPage() {
           </pre>
         </div>
 
-        <div className="flex gap-2">
+        <div className="flex flex-wrap gap-2">
+          <SubmitIssueButton
+            target="lessons"
+            operation="append"
+            data={payload}
+            titleLabel={payload.date}
+          />
           <CopyJsonButton value={payload} />
           <button type="button" onClick={reset} className="btn-secondary">
             Reset

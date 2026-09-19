@@ -16,6 +16,7 @@
 - `golf-session-kickoff` skill as a conversational front-end to `plan-session`
 - Cross-references wired between all 8 skills (active plan informs sessions, reviews feed progress, etc.)
 - "How to handle golf conversations" router section in `CLAUDE.md` for trigger-phrase → skill mapping
+- "Submit via GitHub Issue" path on all 3 draft forms: `.github/workflows/ingest-data-issue.yml` parses the submitted payload and writes/commits it automatically, no chat required (Copy-JSON-to-Claude remains as a manual fallback)
 
 ## Phase 3 — ideas, not committed
 
