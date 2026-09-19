@@ -5,6 +5,8 @@ import statsData from "@/data/stats.json";
 import progressData from "@/data/progress.json";
 import reviewsData from "@/data/reviews.json";
 import trainingPlansData from "@/data/training_plans.json";
+import goalsData from "@/data/goals.json";
+import roundsData from "@/data/rounds.json";
 import type {
   Lesson,
   Drill,
@@ -14,6 +16,8 @@ import type {
   ProgressArea,
   Review,
   TrainingPlan,
+  Goal,
+  Round,
 } from "@/lib/types";
 
 /**
@@ -272,6 +276,88 @@ export function getCurrentPlanWeek(plan: TrainingPlan): number {
   );
   const week = Math.ceil((daysSince + 1) / 7);
   return Math.min(plan.weeks, Math.max(1, week));
+}
+
+export function getGoals(): Goal[] {
+  return goalsData.goals as Goal[];
+}
+
+export function getGoalById(id: string): Goal | undefined {
+  return (goalsData.goals as Goal[]).find((g) => g.id === id);
+}
+
+export function getActiveGoalForClub(club: string): Goal | undefined {
+  return (goalsData.goals as Goal[]).find(
+    (g) => g.club === club && g.status === "active"
+  );
+}
+
+function mean(values: number[]): number | null {
+  if (values.length === 0) return null;
+  return values.reduce((a, b) => a + b, 0) / values.length;
+}
+
+function stdDev(values: number[]): number | null {
+  if (values.length < 2) return null;
+  const m = mean(values)!;
+  const variance =
+    values.reduce((sum, v) => sum + (v - m) ** 2, 0) / (values.length - 1);
+  return Math.sqrt(variance);
+}
+
+export interface GoalProgress {
+  goal: Goal;
+  shotCount: number;
+  avgCarry: number | null;
+  carryStdDev: number | null;
+  avgOffline: number | null;
+  offlineStdDev: number | null;
+  withinTargetCount: number;
+  shots: { date: string; carry: number; offline: number; withinTarget: boolean }[];
+}
+
+/**
+ * Computes objective stats for a goal against real stats.json shots for
+ * that club — raw numbers only (counts, averages, standard deviations).
+ * Any qualitative "on track" / "needs work" judgment is a coaching call
+ * left to a skill reading these numbers, not baked in here.
+ */
+export function getGoalProgress(goal: Goal): GoalProgress {
+  const entries = getStatsByClub(goal.club).filter(
+    (e) => e.carry_yards !== null && e.offline_yards !== null
+  );
+  const carries = entries.map((e) => e.carry_yards as number);
+  const offlines = entries.map((e) => e.offline_yards as number);
+
+  const shots = entries.map((e) => {
+    const carry = e.carry_yards as number;
+    const offline = e.offline_yards as number;
+    const withinTarget =
+      Math.abs(carry - goal.target_carry_yards) <= goal.carry_tolerance_yards &&
+      Math.abs(offline) <= goal.target_dispersion_yards;
+    return { date: e.date, carry, offline, withinTarget };
+  });
+
+  return {
+    goal,
+    shotCount: entries.length,
+    avgCarry: mean(carries),
+    carryStdDev: stdDev(carries),
+    avgOffline: mean(offlines),
+    offlineStdDev: stdDev(offlines),
+    withinTargetCount: shots.filter((s) => s.withinTarget).length,
+    shots,
+  };
+}
+
+export function getRounds(): Round[] {
+  return [...(roundsData.rounds as Round[])].sort((a, b) =>
+    b.date.localeCompare(a.date)
+  );
+}
+
+export function getRoundById(id: string): Round | undefined {
+  return (roundsData.rounds as Round[]).find((r) => r.id === id);
 }
 
 export function formatDate(iso: string): string {

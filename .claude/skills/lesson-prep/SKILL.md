@@ -38,7 +38,15 @@ which is per-area and backward-looking (how has *this one thing* trended).
 6. **Read `/data/training_plans.json`** for the active plan, if any — is it
    on schedule (sessions_planned vs. actual session_ids per week), and did
    it survive the whole window, or was something abandoned/changed?
-7. **Produce the digest**, structured as:
+7. **Read `/data/rounds.json`** for any real/virtual rounds since the last
+   lesson — a fault showing up (or not) on-course is exactly the kind of
+   thing worth telling the coach, since it's evidence of whether range work
+   is transferring.
+8. **Read `/data/goals.json`** — if there's an active per-club distance/
+   dispersion goal, briefly note progress against it (use `getGoalProgress`
+   logic: shots within target vs. total) so locked-in goals stay visible at
+   lesson time, not just on the `/goals` page.
+9. **Produce the digest**, structured as:
    - What's been practiced since the last lesson (session count, ball
      counts, main drills used).
    - What changed — genuine signal only (a real stat trend, a resolved or
@@ -50,7 +58,7 @@ which is per-area and backward-looking (how has *this one thing* trended).
    - If an area logged in `progress.json` has gone quiet since the last
      lesson, say so — the coach should know it wasn't practiced, not
      assume it improved because nothing was reported.
-8. **Do not modify any files.** If the user asks to act on something this
+10. **Do not modify any files.** If the user asks to act on something this
    surfaces (e.g. abandon a stale plan, log something missed), hand off to
    the relevant skill (`training-plan`, `log-session`) rather than writing
    directly.

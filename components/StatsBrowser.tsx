@@ -77,6 +77,7 @@ export default function StatsBrowser({
               <th className="py-2 pr-4">Total</th>
               <th className="py-2 pr-4">Launch</th>
               <th className="py-2 pr-4">Apex</th>
+              <th className="py-2 pr-4">Offline</th>
             </tr>
           </thead>
           <tbody>
@@ -89,6 +90,11 @@ export default function StatsBrowser({
                 <td className="py-2 pr-4">{e.total_yards ?? "–"}</td>
                 <td className="py-2 pr-4">{e.launch_angle_deg ?? "–"}</td>
                 <td className="py-2 pr-4">{e.apex_ft ?? "–"}</td>
+                <td className="py-2 pr-4">
+                  {e.offline_yards === null
+                    ? "–"
+                    : `${Math.abs(e.offline_yards)}yd ${e.offline_yards < 0 ? "L" : e.offline_yards > 0 ? "R" : ""}`.trim()}
+                </td>
               </tr>
             ))}
           </tbody>

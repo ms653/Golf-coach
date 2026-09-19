@@ -38,10 +38,13 @@ session detail page.
    - `self_rated_success`: a 1-5 integer if the user gives or implies a
      rating; otherwise `null` — do not invent one.
 4. **Extract any launch monitor numbers** the user mentions (ball speed,
-   carry, total, launch angle, apex, per club) into new entries appended to
-   `/data/stats.json`, each with `session_id` set to this session's id and
-   an id following the `st-YYYY-MM-DD-<club>-<letter>` pattern (increment
-   the letter if multiple entries share a date+club). Add each new stat
+   carry, total, launch angle, apex, offline distance left/right, per club)
+   into new entries appended to `/data/stats.json`, each with `session_id`
+   set to this session's id and an id following the
+   `st-YYYY-MM-DD-<club>-<letter>` pattern (increment the letter if
+   multiple entries share a date+club). Set `offline_yards` (negative =
+   left, positive = right) only if the user actually stated a direction —
+   leave it `null` rather than assuming straight. Add each new stat
    entry's id to the session's `stats_ids` array.
 5. **Update `/data/progress.json`**: if the session's focus matches an
    existing progress area, append a timeline entry

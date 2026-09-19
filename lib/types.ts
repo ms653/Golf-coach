@@ -52,12 +52,15 @@ export interface StatEntry {
   total_yards: number | null;
   launch_angle_deg: number | null;
   apex_ft: number | null;
+  // Lateral miss from the target line, in yards. Negative = left,
+  // positive = right. Toptracer calls this "offline"; null if not shown.
+  offline_yards: number | null;
   note?: string;
 }
 
 export interface ProgressTimelineEntry {
   date: string;
-  source: "lesson" | "session" | "stats" | "review";
+  source: "lesson" | "session" | "stats" | "review" | "round";
   source_id: string;
   note: string;
 }
@@ -107,6 +110,37 @@ export interface TrainingPlan {
 
 export interface TrainingPlansData {
   plans: TrainingPlan[];
+}
+
+export interface Goal {
+  id: string; // "goal-<club>", e.g. "goal-7i"
+  club: string; // matches StatEntry.club
+  target_carry_yards: number;
+  carry_tolerance_yards: number; // e.g. 5 means "within 5 of target"
+  target_dispersion_yards: number; // acceptable |offline_yards| spread
+  created_date: string;
+  note: string;
+  status: "active" | "achieved" | "abandoned";
+}
+
+export interface GoalsData {
+  goals: Goal[];
+}
+
+export interface Round {
+  id: string; // "round-YYYY-MM-DD"
+  date: string;
+  type: "real" | "virtual";
+  course: string;
+  holes: 9 | 18;
+  score: number; // gross strokes
+  score_to_par: number | null;
+  note: string;
+  linked_focus_areas: string[]; // progress area ids
+}
+
+export interface RoundsData {
+  rounds: Round[];
 }
 
 export interface LessonsData {

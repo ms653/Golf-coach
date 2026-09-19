@@ -8,10 +8,12 @@ const links = [
   { href: "/lessons", label: "Lessons" },
   { href: "/drills", label: "Drills" },
   { href: "/sessions", label: "Sessions" },
+  { href: "/rounds", label: "Rounds" },
   { href: "/progress", label: "Progress" },
   { href: "/training-plans", label: "Plans" },
   { href: "/reviews", label: "Reviews" },
   { href: "/stats", label: "Stats" },
+  { href: "/goals", label: "Goals" },
 ];
 
 export default function Nav() {

@@ -1,6 +1,6 @@
 ---
 name: review-progress
-description: Summarize progress for a given focus area by reading its timeline of notes and stats in /data/progress.json, /data/lessons.json, /data/sessions.json and /data/stats.json, and highlighting trends or recurring issues. Use when the user asks how a specific fault/area is trending, e.g. "how's my sequencing coming along" or "am I still coming over the top as much".
+description: Summarize progress for a given focus area by reading its timeline of notes and stats in /data/progress.json, /data/lessons.json, /data/sessions.json, /data/stats.json, /data/reviews.json and /data/rounds.json, and highlighting trends or recurring issues. Use when the user asks how a specific fault/area is trending, e.g. "how's my sequencing coming along" or "am I still coming over the top as much".
 ---
 
 # review-progress
@@ -32,6 +32,10 @@ answered per-area rather than as a flat stats dump.
    summary alongside lessons/sessions/stats. If `/data/training_plans.json`
    has a plan with `status: "active"`, mention its stated goal
    (`primary_focus`/`rationale`) for context when summarizing, if relevant.
+   Also read `/data/rounds.json` for entries whose `linked_focus_areas`
+   include this area — whether a range fault shows up (or doesn't) in real
+   or virtual rounds is real signal about whether practice is transferring
+   to actual play, distinct from range-only evidence.
 5. **Compute recurrence**: how many of the last 6 lessons had this as
    `fault_focus` (same logic as the dashboard/progress pages), and whether
    that frequency is rising, flat, or falling over the full lesson history,

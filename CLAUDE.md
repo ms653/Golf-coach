@@ -42,6 +42,9 @@ responding — even if the user doesn't name a skill explicitly.
 | "how am I doing on X" / "am I still coming over the top" | `review-progress` |
 | "what should I work on for the next few weeks" / "give me a plan until my next lesson" | `training-plan` |
 | "prep me for my lesson" / "what should I tell Adrian" / "getting ready to see my coach" | `lesson-prep` |
+| "what should I ask before I go" / end-of-lesson, wrapping up | `lesson-debrief` |
+| Describes a round of golf played (real or simulator) | `log-round` |
+| "lock in X yards with my Y" / "set a goal for my driver" | `set-goal` |
 | Anything else golf-related | No skill needed necessarily, but still check current focus + recent lesson/progress before answering, so the answer is grounded in this user's actual data, not generic golf advice |
 
 This routing only fires automatically in a Claude Code session that has
@@ -148,6 +151,7 @@ All files are single top-level objects with one array key, in `/data/`.
   total_yards: number | null;
   launch_angle_deg: number | null;
   apex_ft: number | null;
+  offline_yards: number | null; // lateral miss: negative = left, positive = right
   note?: string;
 }
 ```
@@ -165,7 +169,7 @@ last 6 lessons" — computed at build time from `lessons.fault_focus`).
   description: string;
   timeline: {
     date: string;
-    source: "lesson" | "session" | "stats" | "review";
+    source: "lesson" | "session" | "stats" | "review" | "round";
     source_id: string;       // id into the source file
     note: string;
   }[];
@@ -174,6 +178,87 @@ last 6 lessons" — computed at build time from `lessons.fault_focus`).
 
 Current areas: `sequencing-over-the-top`, `center-face-contact`,
 `distance-ball-speed-consistency`.
+
+### `reviews.json` — `{ reviews: Review[] }`
+
+Structured expert analysis of swing videos/photos and range screenshots,
+kept separate from lesson notes since a review can happen standalone.
+
+```ts
+{
+  id: string;                // "r-YYYY-MM-DD-<letter>"
+  date: string;
+  type: "swing-video" | "range-screenshot";
+  context: string;           // what was actually available (frame count, etc.)
+  linked_lesson_id: string | null;
+  linked_session_id: string | null;
+  observations: { note: string; fault_area: string }[]; // fault_area = progress.json id
+  verdict: string;
+  cues_suggested: string[];
+  drills_suggested: string[]; // drill ids
+}
+```
+
+### `training_plans.json` — `{ plans: TrainingPlan[] }`
+
+Multi-week plans above the single-session level.
+
+```ts
+{
+  id: string;                // "tp-YYYY-MM-DD"
+  created_date: string;
+  weeks: number;
+  primary_focus: string;     // progress.json area id
+  secondary_focus: string | null;
+  rationale: string;         // must be honest about actual evidence, see training-plan skill
+  weekly_structure: {
+    week: number;
+    sessions_planned: number;
+    theme: string;
+    session_ids: string[];   // linked sessions.json ids, filled in as they happen
+  }[];
+  status: "active" | "completed" | "abandoned";
+  review_note: string;
+}
+```
+
+### `goals.json` — `{ goals: Goal[] }`
+
+Locked-in per-club distance/dispersion targets, set via the `set-goal`
+skill and measured against real `stats.json` shots (both `carry_yards` and
+`offline_yards` must be present on a shot for it to count toward a goal).
+
+```ts
+{
+  id: string;                        // "goal-<club>", e.g. "goal-7i"
+  club: string;                      // matches StatEntry.club
+  target_carry_yards: number;
+  carry_tolerance_yards: number;     // "on target" if |carry - target| <= this
+  target_dispersion_yards: number;   // "on target" if |offline_yards| <= this
+  created_date: string;
+  note: string;
+  status: "active" | "achieved" | "abandoned";
+}
+```
+
+### `rounds.json` — `{ rounds: Round[] }`
+
+Real or virtual/simulator rounds played, at summary level (not per-hole) —
+distinct from `sessions.json`'s range practice.
+
+```ts
+{
+  id: string;                 // "round-YYYY-MM-DD"
+  date: string;
+  type: "real" | "virtual";
+  course: string;
+  holes: 9 | 18;
+  score: number;               // gross strokes
+  score_to_par: number | null;
+  note: string;
+  linked_focus_areas: string[]; // progress.json ids, e.g. a range fault seen on-course
+}
+```
 
 ## Skills
 
@@ -202,9 +287,18 @@ Current areas: `sequencing-over-the-top`, `center-face-contact`,
   grounded in recurring lesson/progress patterns, written to
   `training_plans.json`.
 - **lesson-prep** — read-only, cross-area digest of everything since the
-  last lesson (sessions, stats, reviews, quiet areas) to bring to the next
-  one; distinct from `review-progress`'s single-area, backward-looking
-  summary.
+  last lesson (sessions, stats, reviews, rounds, goal progress, quiet
+  areas) to bring to the next one; distinct from `review-progress`'s
+  single-area, backward-looking summary.
+- **lesson-debrief** — read-only, generates sharp questions worth asking
+  the coach before a lesson wraps up (or right after), grounded in what
+  was just covered; distinct from `lesson-prep` (before) and `log-lesson`
+  (recording after).
+- **log-round** — turn a real or virtual/simulator round recap into a
+  structured entry in `rounds.json`, linking to a progress area if a range
+  fault showed up (or didn't) on-course.
+- **set-goal** — lock in a per-club distance/dispersion target in
+  `goals.json`, measured against real `stats.json` shots on `/goals`.
 
 ## Commit policy
 

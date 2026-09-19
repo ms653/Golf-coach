@@ -19,13 +19,23 @@ interpreted rather than just filed away raw.
 1. **View the image** with the Read tool if one was provided, or work from
    the numbers the user typed directly.
 2. **Extract per-shot or per-club numbers** as available: ball speed,
-   carry, total, launch angle, apex, club. Never fabricate a number that
-   isn't visible or stated — leave a field `null` rather than guessing.
+   carry, total, launch angle, apex, club, and **offline distance**
+   (lateral miss left/right of the target line — Toptracer typically shows
+   this directly, e.g. "6 yds R"). Record it as `offline_yards`: negative
+   for left, positive for right, matching the schema in `CLAUDE.md`. Never
+   fabricate a number that isn't visible or stated — leave a field `null`
+   rather than guessing, and note explicitly if offline distance wasn't
+   shown at all (it's required for `/data/goals.json` dispersion tracking
+   to work, so its absence is worth flagging, not silently skipping).
 3. **Cross-reference against the baseline in `CLAUDE.md`** (~150yd average
    7-iron carry, ~170yd on a clean strike, up to 183yd carry / 213yd total
    on a flush hit) and against `/data/stats.json` history for that club, to
    say whether this is consistent with, better than, or worse than the
-   recent pattern — don't just restate the raw numbers back.
+   recent pattern — don't just restate the raw numbers back. If
+   `/data/goals.json` has an active goal for this club, also say plainly
+   whether this shot (or these shots) landed inside the target box
+   (carry within tolerance AND offline within the dispersion target) —
+   locked-in goals are exactly what this cross-reference is for.
 4. **Flag any pattern worth a note**: high dispersion across multiple
    visible shots, or a launch angle/apex combination that looks off versus
    their usual numbers. If — and only if — both ball speed AND club speed

@@ -5,7 +5,14 @@ const REPO = "ms653/Golf-coach";
 // browsers/servers enforce, leaving room for the title + encoding overhead.
 const MAX_URL_LENGTH = 6000;
 
-type Target = "lessons" | "sessions" | "stats" | "reviews" | "training_plans";
+type Target =
+  | "lessons"
+  | "sessions"
+  | "stats"
+  | "reviews"
+  | "training_plans"
+  | "rounds"
+  | "goals";
 type Operation = "append" | "update";
 
 interface Props {

@@ -22,6 +22,8 @@ const TARGETS = {
   reviews: { file: "data/reviews.json", key: "reviews" },
   training_plans: { file: "data/training_plans.json", key: "plans" },
   drills: { file: "data/drills.json", key: "drills" },
+  rounds: { file: "data/rounds.json", key: "rounds" },
+  goals: { file: "data/goals.json", key: "goals" },
 };
 
 function fail(message) {
