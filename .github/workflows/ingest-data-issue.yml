@@ -26,7 +26,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          ref: ${{ github.event.repository.default_branch }}
+          ref: main
 
       - name: Set up Node
         uses: actions/setup-node@v4
@@ -41,7 +41,7 @@ jobs:
 
       - name: Commit and push
         env:
-          BRANCH: ${{ github.event.repository.default_branch }}
+          BRANCH: main
           FILE: ${{ steps.ingest.outputs.file }}
           TARGET: ${{ steps.ingest.outputs.target }}
           OPERATION: ${{ steps.ingest.outputs.operation }}
@@ -63,13 +63,12 @@ jobs:
         uses: actions/github-script@v7
         with:
           script: |
-            const branch = context.payload.repository.default_branch;
             const file = "${{ steps.ingest.outputs.file }}";
             await github.rest.issues.createComment({
               owner: context.repo.owner,
               repo: context.repo.repo,
               issue_number: context.issue.number,
-              body: `✅ Logged to \`${file}\` and pushed to \`${branch}\`. The site will redeploy shortly.`,
+              body: `✅ Logged to \`${file}\` and pushed to \`main\`. The site will redeploy shortly.`,
             });
             await github.rest.issues.update({
               owner: context.repo.owner,
