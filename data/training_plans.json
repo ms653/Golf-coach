@@ -1,0 +1,34 @@
+{
+  "plans": [
+    {
+      "id": "tp-2026-09-19",
+      "created_date": "2026-09-19",
+      "weeks": 3,
+      "primary_focus": "sequencing-over-the-top",
+      "secondary_focus": null,
+      "rationale": "Sequencing/over-the-top has come up repeatedly in recent lessons and is the current coaching focus, so this plan builds the new sequencing feel progressively before testing it under pressure.",
+      "weekly_structure": [
+        {
+          "week": 1,
+          "sessions_planned": 2,
+          "theme": "Isolate the feel with slow, exaggerated reps of step-change-of-direction and pump-drill.",
+          "session_ids": []
+        },
+        {
+          "week": 2,
+          "sessions_planned": 2,
+          "theme": "Add speed to the drills and start transferring the sequencing feel into full swings.",
+          "session_ids": []
+        },
+        {
+          "week": 3,
+          "sessions_planned": 2,
+          "theme": "Pressure-test the new sequencing with a target/scoring game.",
+          "session_ids": []
+        }
+      ],
+      "status": "active",
+      "review_note": ""
+    }
+  ]
+}

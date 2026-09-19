@@ -3,6 +3,8 @@ import drillsData from "@/data/drills.json";
 import sessionsData from "@/data/sessions.json";
 import statsData from "@/data/stats.json";
 import progressData from "@/data/progress.json";
+import reviewsData from "@/data/reviews.json";
+import trainingPlansData from "@/data/training_plans.json";
 import type {
   Lesson,
   Drill,
@@ -10,6 +12,8 @@ import type {
   SessionBlock,
   StatEntry,
   ProgressArea,
+  Review,
+  TrainingPlan,
 } from "@/lib/types";
 
 export function getLessons(): Lesson[] {
@@ -192,6 +196,46 @@ export function generateSessionPlan(
       focus_note: "Easy short-game shots to finish, no swing thoughts.",
     },
   ];
+}
+
+export function getReviews(): Review[] {
+  return [...(reviewsData.reviews as Review[])].sort((a, b) =>
+    b.date.localeCompare(a.date)
+  );
+}
+
+export function getReviewById(id: string): Review | undefined {
+  return (reviewsData.reviews as Review[]).find((r) => r.id === id);
+}
+
+export function getReviewsByFaultArea(areaId: string): Review[] {
+  return getReviews().filter((r) =>
+    r.observations.some((o) => o.fault_area === areaId)
+  );
+}
+
+export function getTrainingPlans(): TrainingPlan[] {
+  return [...(trainingPlansData.plans as TrainingPlan[])].sort((a, b) =>
+    b.created_date.localeCompare(a.created_date)
+  );
+}
+
+export function getTrainingPlanById(id: string): TrainingPlan | undefined {
+  return (trainingPlansData.plans as TrainingPlan[]).find((p) => p.id === id);
+}
+
+export function getActiveTrainingPlan(): TrainingPlan | undefined {
+  return getTrainingPlans().find((p) => p.status === "active");
+}
+
+export function getCurrentPlanWeek(plan: TrainingPlan): number {
+  const created = new Date(plan.created_date + "T00:00:00");
+  const now = new Date();
+  const daysSince = Math.floor(
+    (now.getTime() - created.getTime()) / (1000 * 60 * 60 * 24)
+  );
+  const week = Math.ceil((daysSince + 1) / 7);
+  return Math.min(plan.weeks, Math.max(1, week));
 }
 
 export function formatDate(iso: string): string {

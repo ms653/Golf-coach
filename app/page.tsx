@@ -6,6 +6,8 @@ import {
   getStats,
   formatDate,
   faultFrequencyInRecentLessons,
+  getActiveTrainingPlan,
+  getCurrentPlanWeek,
 } from "@/lib/data";
 
 export default function DashboardPage() {
@@ -14,6 +16,7 @@ export default function DashboardPage() {
   const stats = getStats();
   const recentStats = stats.slice(0, 5);
   const areas = getProgressAreas();
+  const activePlan = getActiveTrainingPlan();
 
   return (
     <div className="space-y-6">
@@ -115,6 +118,39 @@ export default function DashboardPage() {
           </Link>
         </section>
       </div>
+
+      <section className="card">
+        <h2 className="mb-2 text-sm font-semibold uppercase tracking-wide text-fairway-700">
+          Active Training Plan
+        </h2>
+        {activePlan ? (
+          <div>
+            <p className="text-lg font-medium">{activePlan.primary_focus}</p>
+            <p className="mt-1 text-sm text-stone-600">
+              {activePlan.rationale.length > 160
+                ? `${activePlan.rationale.slice(0, 160)}…`
+                : activePlan.rationale}
+            </p>
+            <p className="mt-2 text-sm text-stone-500">
+              Week {getCurrentPlanWeek(activePlan)} of {activePlan.weeks}
+            </p>
+            <Link
+              href={`/training-plans/${activePlan.id}`}
+              className="mt-3 inline-block text-sm font-medium text-fairway-700 hover:underline"
+            >
+              View plan →
+            </Link>
+          </div>
+        ) : (
+          <p className="text-sm text-stone-500">
+            No active training plan.{" "}
+            <Link href="/training-plans" className="text-fairway-700 hover:underline">
+              View plans
+            </Link>
+            .
+          </p>
+        )}
+      </section>
 
       <section className="card">
         <h2 className="mb-3 text-sm font-semibold uppercase tracking-wide text-fairway-700">
