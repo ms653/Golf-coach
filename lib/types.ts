@@ -57,7 +57,7 @@ export interface StatEntry {
 
 export interface ProgressTimelineEntry {
   date: string;
-  source: "lesson" | "session" | "stats";
+  source: "lesson" | "session" | "stats" | "review";
   source_id: string;
   note: string;
 }
@@ -67,6 +67,46 @@ export interface ProgressArea {
   name: string;
   description: string;
   timeline: ProgressTimelineEntry[];
+}
+
+export interface Review {
+  id: string;
+  date: string;
+  type: "swing-video" | "range-screenshot";
+  context: string;
+  linked_lesson_id: string | null;
+  linked_session_id: string | null;
+  observations: { note: string; fault_area: string }[];
+  verdict: string;
+  cues_suggested: string[];
+  drills_suggested: string[];
+}
+
+export interface ReviewsData {
+  reviews: Review[];
+}
+
+export interface TrainingPlanWeek {
+  week: number;
+  sessions_planned: number;
+  theme: string;
+  session_ids: string[];
+}
+
+export interface TrainingPlan {
+  id: string;
+  created_date: string;
+  weeks: number;
+  primary_focus: string;
+  secondary_focus: string | null;
+  rationale: string;
+  weekly_structure: TrainingPlanWeek[];
+  status: "active" | "completed" | "abandoned";
+  review_note: string;
+}
+
+export interface TrainingPlansData {
+  plans: TrainingPlan[];
 }
 
 export interface LessonsData {
