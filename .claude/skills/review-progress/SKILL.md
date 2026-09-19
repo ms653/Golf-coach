@@ -27,11 +27,16 @@ answered per-area rather than as a flat stats dump.
    via linked sessions in `stats_ids`, or entries whose `note`/date lines up
    with the area's timeline) to ground qualitative notes in numbers where
    possible.
-4. **Compute recurrence**: how many of the last 6 lessons had this as
+4. **Read `/data/reviews.json`** for entries whose `observations` include a
+   matching `fault_area`, and fold their `verdict`/`cues_suggested` into the
+   summary alongside lessons/sessions/stats. If `/data/training_plans.json`
+   has a plan with `status: "active"`, mention its stated goal
+   (`primary_focus`/`rationale`) for context when summarizing, if relevant.
+5. **Compute recurrence**: how many of the last 6 lessons had this as
    `fault_focus` (same logic as the dashboard/progress pages), and whether
    that frequency is rising, flat, or falling over the full lesson history,
    not just the last 6.
-5. **Summarize**, covering:
+6. **Summarize**, covering:
    - How long this has been a tracked focus (first timeline entry to most
      recent).
    - What's been tried (drills, cues) and what recurs across entries.
@@ -40,6 +45,6 @@ answered per-area rather than as a flat stats dump.
    - A clear verdict: improving, plateaued, or worsening — don't hedge past
      what the data actually shows, and say plainly when there isn't enough
      data yet to call a trend.
-6. **Do not modify any files.** If the user then asks to log something new
+7. **Do not modify any files.** If the user then asks to log something new
    based on this review, hand off to `log-lesson` or `log-session` rather
    than writing directly.
