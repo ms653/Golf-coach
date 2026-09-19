@@ -1,0 +1,60 @@
+{
+  "drills": [
+    {
+      "id": "step-change-of-direction",
+      "name": "Step Change of Direction",
+      "description": "Start with feet together, step the lead foot toward the target as you start the downswing, then the trail foot follows. Forces the lower body to initiate the downswing before the arms/club.",
+      "target_faults": ["sequencing", "over-the-top"],
+      "clubs": ["any"]
+    },
+    {
+      "id": "pump-drill",
+      "name": "Pump Drill",
+      "description": "From the top of the backswing, pump the downswing move (start the lower body/hips turning toward target) 2-3 times without releasing, then let the final pump flow into the strike. Builds the feel of starting down with the lower body while the upper body/arms stay passive.",
+      "target_faults": ["sequencing", "over-the-top"],
+      "clubs": ["irons", "wedges"]
+    },
+    {
+      "id": "split-grip",
+      "name": "Split-Grip Drill",
+      "description": "Grip the club with hands separated a few inches (like a baseball bat choke-down split). Makes it harder to cast/throw the club from the top, exaggerating the feel of a passive-arms, body-led downswing.",
+      "target_faults": ["sequencing", "over-the-top", "casting"],
+      "clubs": ["irons", "wedges"]
+    },
+    {
+      "id": "two-tee-gate",
+      "name": "Two-Tee Gate Drill",
+      "description": "Place two tees just wider than the clubhead outside the ball on the target line, forming a gate. Swing through without clipping either tee to encourage an in-to-square path and center-face contact.",
+      "target_faults": ["over-the-top", "center-face contact", "path"],
+      "clubs": ["irons"]
+    },
+    {
+      "id": "alignment-stick-headcover",
+      "name": "Alignment Stick / Headcover Drill",
+      "description": "Place an alignment stick or headcover just outside the ball on the takeaway/downswing path line (or behind the trail hip). Hitting it on the way down is immediate feedback for an over-the-top move.",
+      "target_faults": ["over-the-top", "path"],
+      "clubs": ["irons", "woods"]
+    },
+    {
+      "id": "impact-tape",
+      "name": "Impact Tape / Spray",
+      "description": "Apply impact tape or foot spray to the clubface to see exactly where contact is being made, building awareness of toe/heel/center strike patterns.",
+      "target_faults": ["center-face contact"],
+      "clubs": ["any"]
+    },
+    {
+      "id": "coin-under-ball",
+      "name": "Coin-Under-Ball Drill",
+      "description": "Place a coin just in front of (target side of) the ball and try to strike the coin after the ball, promoting ball-first contact and better low-point control.",
+      "target_faults": ["center-face contact", "ball-striking", "low point"],
+      "clubs": ["irons", "wedges"]
+    },
+    {
+      "id": "feet-together",
+      "name": "Feet-Together Drill",
+      "description": "Hit balls with feet together (or very narrow stance). Forces better balance and rotational sequencing since there's no width to rely on for power from the arms alone.",
+      "target_faults": ["sequencing", "balance", "center-face contact"],
+      "clubs": ["irons", "wedges"]
+    }
+  ]
+}

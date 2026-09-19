@@ -1,0 +1,42 @@
+{
+  "areas": [
+    {
+      "id": "sequencing-over-the-top",
+      "name": "Sequencing / Over-the-top",
+      "description": "Starting the downswing with the lower body instead of the arms/shoulders. Over-the-top is treated as a symptom of this rather than a separate fault.",
+      "timeline": [
+        {
+          "date": "2026-09-12",
+          "source": "lesson",
+          "source_id": "l-2026-09-12",
+          "note": "Coach cue: \"let the arms drop\" (feel cue for passive arms, not skipping the lower body). Recommended step-change-of-direction and pump-drill."
+        },
+        {
+          "date": "2026-09-12",
+          "source": "review",
+          "source_id": "r-2026-09-12-a",
+          "note": "Swing-video review confirmed arms/shoulders start the downswing before the hips clear; suggested pump-drill and step-change-of-direction."
+        }
+      ]
+    },
+    {
+      "id": "center-face-contact",
+      "name": "Center-Face Contact",
+      "description": "Consistency of strike location across the face, independent of the sequencing fault.",
+      "timeline": []
+    },
+    {
+      "id": "distance-ball-speed-consistency",
+      "name": "Distance / Ball Speed Consistency",
+      "description": "How consistently the swing produces its top-end numbers rather than one-off flush hits. Baseline: ~150yd average 7-iron carry, ~170yd on a clean strike, up to 183yd carry / 213yd total on a flush hit (131 mph ball speed, 14 degree launch).",
+      "timeline": [
+        {
+          "date": "2026-09-12",
+          "source": "stats",
+          "source_id": "st-2026-09-12-7i-a",
+          "note": "Flush 7-iron: 131 mph ball speed, 14 degree launch, 183yd carry / 213yd total. Well above the ~150yd average carry, showing the gap between best and average strikes."
+        }
+      ]
+    }
+  ]
+}

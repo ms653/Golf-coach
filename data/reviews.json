@@ -1,0 +1,21 @@
+{
+  "reviews": [
+    {
+      "id": "r-2026-09-12-a",
+      "date": "2026-09-12",
+      "type": "swing-video",
+      "context": "Down-the-line swing video shared in chat after today's lesson with Adrian.",
+      "linked_lesson_id": "l-2026-09-12",
+      "linked_session_id": null,
+      "observations": [
+        {
+          "note": "From the top of the backswing, the arms and shoulders start moving down and out toward the ball before the hips have begun clearing toward the target, consistent with the lesson's diagnosis of the downswing being initiated by the upper body rather than the lower body.",
+          "fault_area": "sequencing-over-the-top"
+        }
+      ],
+      "verdict": "This confirms what came up in today's lesson: the downswing is being started by the arms/shoulders instead of the lower body, which pushes the club out and over the ideal path and shows up as the over-the-top move. The fix isn't a separate swing-plane correction — it's getting the hips to initiate the downswing first so the arms are just along for the ride, matching the coach's \"let the arms drop\" cue.",
+      "cues_suggested": ["let the arms drop"],
+      "drills_suggested": ["pump-drill", "step-change-of-direction"]
+    }
+  ]
+}

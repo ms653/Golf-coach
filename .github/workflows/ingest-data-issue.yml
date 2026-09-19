@@ -1,0 +1,92 @@
+name: Ingest data submission issues
+
+on:
+  issues:
+    types: [opened]
+
+permissions:
+  contents: write
+  issues: write
+
+concurrency:
+  group: data-ingest
+  cancel-in-progress: false
+
+jobs:
+  ingest:
+    # Repo is public (required for free GitHub Pages), so anyone can open an
+    # issue. Only ever process one opened by the actual owner — otherwise a
+    # stranger could submit a crafted payload and have it committed as real
+    # data. Update this login if you ever add a trusted collaborator.
+    if: >
+      github.event.issue.user.login == 'ms653' &&
+      contains(github.event.issue.body, '<!-- golf-coach-data -->')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.repository.default_branch }}
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Ingest issue data
+        id: ingest
+        env:
+          ISSUE_BODY: ${{ github.event.issue.body }}
+        run: node scripts/ingest-issue.mjs
+
+      - name: Commit and push
+        env:
+          BRANCH: ${{ github.event.repository.default_branch }}
+          FILE: ${{ steps.ingest.outputs.file }}
+          TARGET: ${{ steps.ingest.outputs.target }}
+          OPERATION: ${{ steps.ingest.outputs.operation }}
+          REC_ID: ${{ steps.ingest.outputs.id }}
+          ISSUE: ${{ github.event.issue.number }}
+        run: |
+          git config user.name "golf-coach-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add "$FILE"
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Ingest $TARGET $OPERATION from issue #$ISSUE ($REC_ID)"
+            git push origin HEAD:"$BRANCH"
+          fi
+
+      - name: Comment and close on success
+        if: success()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const branch = context.payload.repository.default_branch;
+            const file = "${{ steps.ingest.outputs.file }}";
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body: `✅ Logged to \`${file}\` and pushed to \`${branch}\`. The site will redeploy shortly.`,
+            });
+            await github.rest.issues.update({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              state: "closed",
+              state_reason: "completed",
+            });
+
+      - name: Comment on failure
+        if: failure()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body: "⚠️ Couldn't process this submission automatically — check the [workflow run](" + `https://github.com/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}` + ") for details. Leaving this open; ask Claude to log it manually, or fix and re-submit.",
+            });
