@@ -350,6 +350,60 @@ export function getGoalProgress(goal: Goal): GoalProgress {
   };
 }
 
+export interface ClubDispersion {
+  club: string;
+  asOfDate: string;
+  shotCount: number;
+  avgCarry: number | null;
+  carryStdDev: number | null;
+  avgOffline: number | null;
+  offlineStdDev: number | null;
+}
+
+/**
+ * Dispersion for a club using a trailing window of shots (most recent
+ * `windowSize`, by date) as of a given date — not all-time cumulative, so
+ * the pattern can visibly tighten OR loosen as practice continues, rather
+ * than an ever-growing average that can only converge.
+ */
+export function getClubDispersionAsOf(
+  club: string,
+  asOfDate: string,
+  windowSize = 15
+): ClubDispersion {
+  const shots = getStatsByClub(club)
+    .filter(
+      (e) =>
+        e.date <= asOfDate && e.carry_yards !== null && e.offline_yards !== null
+    )
+    .sort((a, b) => b.date.localeCompare(a.date))
+    .slice(0, windowSize);
+
+  const carries = shots.map((e) => e.carry_yards as number);
+  const offlines = shots.map((e) => e.offline_yards as number);
+
+  return {
+    club,
+    asOfDate,
+    shotCount: shots.length,
+    avgCarry: mean(carries),
+    carryStdDev: stdDev(carries),
+    avgOffline: mean(offlines),
+    offlineStdDev: stdDev(offlines),
+  };
+}
+
+/** Unique dates (sorted ascending) across all stats entries with both
+ * carry and offline present — used to drive a time scroller over only
+ * the dates that actually have dispersion data. */
+export function getDispersionDates(): string[] {
+  const dates = new Set<string>();
+  (statsData.entries as StatEntry[]).forEach((e) => {
+    if (e.carry_yards !== null && e.offline_yards !== null) dates.add(e.date);
+  });
+  return Array.from(dates).sort();
+}
+
 export function getRounds(): Round[] {
   return [...(roundsData.rounds as Round[])].sort((a, b) =>
     b.date.localeCompare(a.date)

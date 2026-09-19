@@ -15,10 +15,12 @@ export default function GoalsPage() {
 
       {goals.length === 0 ? (
         <p className="text-sm text-stone-500">
-          No goals set yet. Tell Claude a target carry distance and
-          acceptable dispersion for a club (e.g. &ldquo;lock in 165 with the
-          7-iron, within 5 yards left or right&rdquo;) and the{" "}
-          <span className="font-mono">set-goal</span> skill will add it here.
+          No goals set yet. Ask Claude to suggest one for a club (e.g.
+          &ldquo;suggest a goal for my 7-iron&rdquo;) — the{" "}
+          <span className="font-mono">suggest-goals</span> skill proposes
+          the target from your own shot history rather than asking you to
+          invent a number. Needs at least 5 logged shots with both carry
+          and offline distance for that club.
         </p>
       ) : (
         <div className="space-y-6">

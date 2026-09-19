@@ -55,7 +55,12 @@ interpreted rather than just filed away raw.
    `verdict` summarizing the interpretation from step 3-4. Append a
    timeline entry to the matching `/data/progress.json` area with
    `source: "review"`.
-7. **Commit and push**, e.g. `Add range screenshot review: <date>`. Routine
+7. **Check whether this club just crossed a goal-suggestion checkpoint**:
+   if it now has 5+ logged shots with both `carry_yards` and
+   `offline_yards` and no active goal in `/data/goals.json`, mention that
+   a data-driven goal could be suggested (`suggest-goals`) rather than
+   running it unprompted.
+8. **Commit and push**, e.g. `Add range screenshot review: <date>`. Routine
    logging doesn't need confirmation first, per this repo's commit policy.
 
 ## Notes

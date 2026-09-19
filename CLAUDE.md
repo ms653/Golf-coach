@@ -44,7 +44,7 @@ responding — even if the user doesn't name a skill explicitly.
 | "prep me for my lesson" / "what should I tell Adrian" / "getting ready to see my coach" | `lesson-prep` |
 | "what should I ask before I go" / end-of-lesson, wrapping up | `lesson-debrief` |
 | Describes a round of golf played (real or simulator) | `log-round` |
-| "lock in X yards with my Y" / "set a goal for my driver" | `set-goal` |
+| "suggest a goal for my Y" / "what should I lock in with driver" | `suggest-goals` |
 | Anything else golf-related | No skill needed necessarily, but still check current focus + recent lesson/progress before answering, so the answer is grounded in this user's actual data, not generic golf advice |
 
 This routing only fires automatically in a Claude Code session that has
@@ -224,9 +224,11 @@ Multi-week plans above the single-session level.
 
 ### `goals.json` — `{ goals: Goal[] }`
 
-Locked-in per-club distance/dispersion targets, set via the `set-goal`
-skill and measured against real `stats.json` shots (both `carry_yards` and
-`offline_yards` must be present on a shot for it to count toward a goal).
+Locked-in per-club distance/dispersion targets. **Suggested by the
+`suggest-goals` skill from real shot history, not manually specified** —
+the user shouldn't have to invent a target number themselves. Measured
+against real `stats.json` shots (both `carry_yards` and `offline_yards`
+must be present on a shot for it to count toward a goal).
 
 ```ts
 {
@@ -297,8 +299,11 @@ distinct from `sessions.json`'s range practice.
 - **log-round** — turn a real or virtual/simulator round recap into a
   structured entry in `rounds.json`, linking to a progress area if a range
   fault showed up (or didn't) on-course.
-- **set-goal** — lock in a per-club distance/dispersion target in
-  `goals.json`, measured against real `stats.json` shots on `/goals`.
+- **suggest-goals** — proposes a per-club distance/dispersion target from
+  real `stats.json` history (never asks the user to invent a number), and
+  re-evaluates existing goals as more shots accumulate — tightens
+  automatically when a target is being beaten, flags (never silently
+  loosens) when one isn't being hit. Tracked on `/goals` and `/bag-map`.
 
 ## Commit policy
 

@@ -59,9 +59,14 @@ session detail page.
    is most recent — no need to be precise about exact week boundaries).
    Don't silently ignore an active plan; a missing file just means there's
    no plan to update.
-7. **Validate** all touched JSON files are well-formed (matching the shapes
+7. **Check whether a club just crossed a goal-suggestion checkpoint**: if
+   any club now has 5 or more logged shots with both `carry_yards` and
+   `offline_yards`, and has no active goal in `/data/goals.json`, mention
+   that a data-driven goal could be suggested (`suggest-goals`) — don't run
+   it automatically, just offer, since setting a goal is a deliberate step.
+8. **Validate** all touched JSON files are well-formed (matching the shapes
    in `CLAUDE.md`) before writing.
-8. **Commit and push** to the current branch with a concise message, e.g.
+9. **Commit and push** to the current branch with a concise message, e.g.
    `Log range session: <focus>, <date>`. No need to ask first for a routine
    session log — this matches this repo's commit policy in `CLAUDE.md`.
    Ask first only if the description is ambiguous enough that you're

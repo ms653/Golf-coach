@@ -45,7 +45,10 @@ which is per-area and backward-looking (how has *this one thing* trended).
 8. **Read `/data/goals.json`** — if there's an active per-club distance/
    dispersion goal, briefly note progress against it (use `getGoalProgress`
    logic: shots within target vs. total) so locked-in goals stay visible at
-   lesson time, not just on the `/goals` page.
+   lesson time, not just on the `/goals` page. If it looks due for
+   re-evaluation by `suggest-goals`' own thresholds (consistently beaten or
+   consistently missed over its trailing window), mention that too rather
+   than just reporting a stale number.
 9. **Produce the digest**, structured as:
    - What's been practiced since the last lesson (session count, ball
      counts, main drills used).

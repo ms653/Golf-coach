@@ -22,14 +22,19 @@
 
 ## Phase 4 — this batch
 
-- `data/goals.json` + `set-goal` skill: locked-in per-club distance/dispersion targets (target carry ± tolerance, target left-right spread), measured against real `stats.json` shots via `getGoalProgress`
+- `data/goals.json` + a goal-setting skill: locked-in per-club distance/dispersion targets (target carry ± tolerance, target left-right spread), measured against real `stats.json` shots via `getGoalProgress` (superseded by `suggest-goals` in Phase 6 below — goals are now data-suggested, not manually specified)
 - `offline_yards` added to `StatEntry` (lateral miss, negative = left / positive = right) — required for dispersion tracking; `analyze-range-screenshot` and `log-session` now capture it when available
 - `/goals` page: per-club dispersion scatter chart (carry vs. offline) with the target zone overlaid, and objective stats (shot count, avg carry, carry/offline standard deviation, % of shots within target) — code computes raw numbers only, no baked-in qualitative judgment
 - `data/rounds.json` + `log-round` skill + `/rounds` pages (list/detail/add): real or virtual/simulator round summaries (score, course, linked focus areas), distinct from `sessions.json`'s range practice — lets on-course evidence of a fault feed back into `review-progress`/`lesson-prep`
 - `lesson-debrief` skill: sharp, specific questions worth asking the coach before a lesson wraps up, distinct from `lesson-prep` (before) and `log-lesson` (recording after)
 - Filled a pre-existing documentation gap: `reviews.json` and `training_plans.json` never had formal schema blocks in `CLAUDE.md`'s Data Schema section, just narrative skill descriptions — added
 
-## Phase 5 — ideas, not committed
+## Phase 6 — this batch
+
+- `/bag-map` page: a schematic top-down range (SVG, no external image) showing every club's actual shot pattern at once — a dispersion ellipse (mean ± standard deviation of carry and offline) per club, color-coded, with a time scroller over `getDispersionDates()` so the pattern can be scrubbed back to an earlier practice date and watched tighten (or not) as shots accumulate. Uses a trailing window (most recent 15 shots as of the scrubbed date, not all-time cumulative) specifically so regression is visible, not just convergence. A club's locked-in goal, where one exists, shows as a tick mark on the centerline at its target distance.
+- Goals are now **suggested, not manually specified**: replaced the `set-goal` skill with `suggest-goals`, which computes a first-time target from the trailing 15 (or fewer) real shots for a club (target = mean carry, tolerance/dispersion = 80% of the real standard deviations, all rounded to the nearest 5) rather than asking the user to invent numbers. It also re-evaluates existing goals: tightens automatically (75% of current tolerance/dispersion) when 8+ of the last 10 shots beat it, and flags — but never silently loosens — when 3 or fewer of the last 15 beat it. `log-session` and `analyze-range-screenshot` now proactively mention when a club crosses the 5-shot threshold for its first suggestion.
+
+## Phase 7 — ideas, not committed
 
 - Correlate stat trends against specific drills to see what's actually moving the needle
 - Calendar/reminder integration for session cadence
@@ -37,3 +42,4 @@
 - Voice-memo-to-lesson-note capture right after a lesson ends
 - Per-hole round detail (fairways hit, GIR, putts) if summary-level rounds turn out not to be enough signal
 - A target completion date on goals, and a dashboard nudge when a goal has gone untouched (no matching stats logged) for a while
+- A true covariance-based dispersion ellipse (captures correlation between direction and distance) instead of the current axis-aligned approximation on `/bag-map`, if the simplification ever looks misleading against real data

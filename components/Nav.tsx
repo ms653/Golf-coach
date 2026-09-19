@@ -14,6 +14,7 @@ const links = [
   { href: "/reviews", label: "Reviews" },
   { href: "/stats", label: "Stats" },
   { href: "/goals", label: "Goals" },
+  { href: "/bag-map", label: "Bag Map" },
 ];
 
 export default function Nav() {
