@@ -1,5 +1,5 @@
 const isGithubPages = process.env.GITHUB_PAGES === "true";
-const repoName = "golf-coach";
+const repoName = "Golf-coach";
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
