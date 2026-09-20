@@ -23,7 +23,14 @@
       "id": "center-face-contact",
       "name": "Center-Face Contact",
       "description": "Consistency of strike location across the face, independent of the sequencing fault.",
-      "timeline": []
+      "timeline": [
+        {
+          "date": "2026-09-17",
+          "source": "round",
+          "source_id": "round-2026-09-17",
+          "note": "First on-course evidence for this area: toe and topped strikes off the tee all round at Ramsdale (18-hole par 3, shot 105)."
+        }
+      ]
     },
     {
       "id": "distance-ball-speed-consistency",
