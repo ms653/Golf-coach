@@ -18,10 +18,10 @@ export default function Nav() {
   const pathname = usePathname();
 
   return (
-    <header className="border-b border-stone-200 bg-white">
+    <header className="bg-surface-deep">
       <div className="mx-auto flex max-w-5xl flex-wrap items-center gap-1 px-4 py-3">
-        <span className="mr-4 text-lg font-semibold text-fairway-700">
-          ⛳ Golf Progress
+        <span className="mr-4 font-display text-lg font-semibold text-ink-ondeep">
+          Range Book
         </span>
         <nav className="flex flex-wrap gap-1">
           {links.map((link) => {
@@ -36,7 +36,7 @@ export default function Nav() {
                 className={`rounded-lg px-3 py-1.5 text-sm font-medium transition-colors ${
                   active
                     ? "bg-fairway-600 text-white"
-                    : "text-stone-600 hover:bg-stone-100"
+                    : "text-ink-ondeep/70 hover:bg-white/10 hover:text-ink-ondeep"
                 }`}
               >
                 {link.label}

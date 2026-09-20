@@ -21,7 +21,7 @@ export default function ProgressPage() {
                   {area.timeline.length} note{area.timeline.length === 1 ? "" : "s"}
                 </span>
                 {recurring && (
-                  <span className="badge bg-amber-100 text-amber-800">
+                  <span className="badge-alert">
                     Recurring: {freq.count}/{freq.total} recent lessons
                   </span>
                 )}

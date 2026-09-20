@@ -170,7 +170,7 @@ export default function DashboardPage() {
                       <span className="badge">achieved</span>
                     )}
                   </div>
-                  <p className="mt-1 text-xs text-stone-500">
+                  <p className="stat mt-1 text-xs text-stone-500">
                     {pct !== null
                       ? `${pct}% of ${progress.shotCount} shots on target`
                       : "No shots logged yet"}

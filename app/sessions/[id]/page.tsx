@@ -29,9 +29,7 @@ export default function SessionDetailPage({
         <div className="flex items-center justify-between">
           <h1 className="text-xl font-bold">{session.focus}</h1>
           <span
-            className={`badge ${
-              session.status === "completed" ? "" : "bg-amber-100 text-amber-800"
-            }`}
+            className={session.status === "completed" ? "badge" : "badge-marker"}
           >
             {session.status}
           </span>

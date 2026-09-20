@@ -32,11 +32,7 @@ export default function TrainingPlanDetailPage({
       <div className="card">
         <div className="flex items-center justify-between">
           <h1 className="text-xl font-bold">{plan.primary_focus}</h1>
-          <span
-            className={`badge ${
-              plan.status === "active" ? "bg-amber-100 text-amber-800" : ""
-            }`}
-          >
+          <span className={plan.status === "active" ? "badge-marker" : "badge"}>
             {plan.status}
           </span>
         </div>

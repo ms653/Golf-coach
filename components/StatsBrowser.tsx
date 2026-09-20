@@ -43,9 +43,15 @@ export default function StatsBrowser({
             <p className="font-medium">{c.club}</p>
             <p className="mt-1 text-xs text-stone-500">{c.count} entries</p>
             <div className="mt-2 space-y-0.5 text-sm text-stone-700">
-              <p>Avg ball speed: {c.avg_ball_speed ?? "–"} mph</p>
-              <p>Avg carry: {c.avg_carry ?? "–"} yd</p>
-              <p>Avg total: {c.avg_total ?? "–"} yd</p>
+              <p>
+                Avg ball speed: <span className="stat">{c.avg_ball_speed ?? "–"}</span> mph
+              </p>
+              <p>
+                Avg carry: <span className="stat">{c.avg_carry ?? "–"}</span> yd
+              </p>
+              <p>
+                Avg total: <span className="stat">{c.avg_total ?? "–"}</span> yd
+              </p>
             </div>
           </button>
         ))}
@@ -85,12 +91,12 @@ export default function StatsBrowser({
               <tr key={e.id} className="border-b border-stone-100">
                 <td className="py-2 pr-4">{formatDate(e.date)}</td>
                 <td className="py-2 pr-4">{e.club}</td>
-                <td className="py-2 pr-4">{e.ball_speed_mph ?? "–"}</td>
-                <td className="py-2 pr-4">{e.carry_yards ?? "–"}</td>
-                <td className="py-2 pr-4">{e.total_yards ?? "–"}</td>
-                <td className="py-2 pr-4">{e.launch_angle_deg ?? "–"}</td>
-                <td className="py-2 pr-4">{e.apex_ft ?? "–"}</td>
-                <td className="py-2 pr-4">
+                <td className="stat py-2 pr-4">{e.ball_speed_mph ?? "–"}</td>
+                <td className="stat py-2 pr-4">{e.carry_yards ?? "–"}</td>
+                <td className="stat py-2 pr-4">{e.total_yards ?? "–"}</td>
+                <td className="stat py-2 pr-4">{e.launch_angle_deg ?? "–"}</td>
+                <td className="stat py-2 pr-4">{e.apex_ft ?? "–"}</td>
+                <td className="stat py-2 pr-4">
                   {e.offline_yards === null
                     ? "–"
                     : `${Math.abs(e.offline_yards)}yd ${e.offline_yards < 0 ? "L" : e.offline_yards > 0 ? "R" : ""}`.trim()}

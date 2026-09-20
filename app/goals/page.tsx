@@ -42,7 +42,7 @@ export default function GoalsPage() {
                     {goal.status}
                   </span>
                 </div>
-                <p className="mt-1 text-sm text-stone-600">
+                <p className="stat mt-1 text-sm text-stone-600">
                   Target: {goal.target_carry_yards}yd carry (±
                   {goal.carry_tolerance_yards}yd), within ±
                   {goal.target_dispersion_yards}yd left/right
@@ -64,19 +64,19 @@ export default function GoalsPage() {
                     <div className="mt-4 grid grid-cols-2 gap-3 text-sm sm:grid-cols-4">
                       <div>
                         <p className="text-xs uppercase text-stone-500">Shots</p>
-                        <p className="font-medium">{progress.shotCount}</p>
+                        <p className="stat font-medium">{progress.shotCount}</p>
                       </div>
                       <div>
                         <p className="text-xs uppercase text-stone-500">Avg carry</p>
-                        <p className="font-medium">{round1(progress.avgCarry)}yd</p>
+                        <p className="stat font-medium">{round1(progress.avgCarry)}yd</p>
                       </div>
                       <div>
                         <p className="text-xs uppercase text-stone-500">Carry spread (σ)</p>
-                        <p className="font-medium">{round1(progress.carryStdDev)}yd</p>
+                        <p className="stat font-medium">{round1(progress.carryStdDev)}yd</p>
                       </div>
                       <div>
                         <p className="text-xs uppercase text-stone-500">Offline spread (σ)</p>
-                        <p className="font-medium">{round1(progress.offlineStdDev)}yd</p>
+                        <p className="stat font-medium">{round1(progress.offlineStdDev)}yd</p>
                       </div>
                     </div>
                     <p className="mt-2 text-sm text-stone-700">

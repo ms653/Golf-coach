@@ -20,11 +20,7 @@ export default function TrainingPlansPage() {
             >
               <div className="flex items-center justify-between">
                 <p className="font-medium">{plan.primary_focus}</p>
-                <span
-                  className={`badge ${
-                    plan.status === "active" ? "bg-amber-100 text-amber-800" : ""
-                  }`}
-                >
+                <span className={plan.status === "active" ? "badge-marker" : "badge"}>
                   {plan.status}
                 </span>
               </div>

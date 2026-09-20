@@ -48,11 +48,7 @@ export default function SessionsPage() {
               <div className="flex items-center justify-between">
                 <p className="font-medium">{session.focus}</p>
                 <span
-                  className={`badge ${
-                    session.status === "completed"
-                      ? ""
-                      : "bg-amber-100 text-amber-800"
-                  }`}
+                  className={session.status === "completed" ? "badge" : "badge-marker"}
                 >
                   {session.status}
                 </span>
