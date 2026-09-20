@@ -1,9 +1,11 @@
 import Link from "next/link";
 import {
   getCurrentFocus,
+  getSessions,
   getLatestCompletedSession,
   getProgressAreas,
-  getStats,
+  getGoals,
+  getGoalProgress,
   formatDate,
   faultFrequencyInRecentLessons,
   getActiveTrainingPlan,
@@ -12,11 +14,11 @@ import {
 
 export default function DashboardPage() {
   const currentFocus = getCurrentFocus();
-  const lastSession = getLatestCompletedSession();
-  const stats = getStats();
-  const recentStats = stats.slice(0, 5);
-  const areas = getProgressAreas();
   const activePlan = getActiveTrainingPlan();
+  const nextSession = getSessions().find((s) => s.status === "planned");
+  const lastSession = getLatestCompletedSession();
+  const areas = getProgressAreas();
+  const activeGoals = getGoals().filter((g) => g.status !== "abandoned");
 
   return (
     <div className="space-y-6">
@@ -49,6 +51,26 @@ export default function DashboardPage() {
             >
               View lesson →
             </Link>
+
+            {activePlan && (
+              <div className="mt-4 border-t border-stone-200 pt-4">
+                <p className="text-xs font-semibold uppercase tracking-wide text-stone-500">
+                  Active Training Plan · Week {getCurrentPlanWeek(activePlan)}{" "}
+                  of {activePlan.weeks}
+                </p>
+                <p className="mt-1 text-sm text-stone-700">
+                  {activePlan.rationale.length > 160
+                    ? `${activePlan.rationale.slice(0, 160)}…`
+                    : activePlan.rationale}
+                </p>
+                <Link
+                  href={`/training-plans/${activePlan.id}`}
+                  className="mt-2 inline-block text-sm font-medium text-fairway-700 hover:underline"
+                >
+                  View plan →
+                </Link>
+              </div>
+            )}
           </div>
         ) : (
           <p className="text-sm text-stone-500">No lessons logged yet.</p>
@@ -56,6 +78,33 @@ export default function DashboardPage() {
       </section>
 
       <div className="grid gap-6 sm:grid-cols-2">
+        <section className="card">
+          <h2 className="mb-2 text-sm font-semibold uppercase tracking-wide text-fairway-700">
+            Next Session
+          </h2>
+          {nextSession ? (
+            <div>
+              <p className="font-medium">{nextSession.focus}</p>
+              <p className="text-sm text-stone-600">
+                {formatDate(nextSession.date)} ·{" "}
+                {nextSession.ball_count_planned} balls ·{" "}
+                {nextSession.blocks.length} blocks
+              </p>
+              <Link
+                href={`/sessions/${nextSession.id}`}
+                className="mt-3 inline-block text-sm font-medium text-fairway-700 hover:underline"
+              >
+                View plan →
+              </Link>
+            </div>
+          ) : (
+            <p className="text-sm text-stone-500">
+              No session planned yet. Tell Claude you&apos;re heading to the
+              range to plan one.
+            </p>
+          )}
+        </section>
+
         <section className="card">
           <h2 className="mb-2 text-sm font-semibold uppercase tracking-wide text-fairway-700">
             Last Session
@@ -81,74 +130,55 @@ export default function DashboardPage() {
             </div>
           ) : (
             <p className="text-sm text-stone-500">
-              No completed sessions yet.{" "}
-              <Link href="/sessions/plan" className="text-fairway-700 hover:underline">
-                Plan one
-              </Link>
-              .
+              No completed sessions yet.
             </p>
           )}
-        </section>
-
-        <section className="card">
-          <h2 className="mb-2 text-sm font-semibold uppercase tracking-wide text-fairway-700">
-            Quick Stat Trend
-          </h2>
-          {recentStats.length > 0 ? (
-            <ul className="space-y-1 text-sm">
-              {recentStats.map((s) => (
-                <li key={s.id} className="flex justify-between">
-                  <span className="text-stone-600">
-                    {formatDate(s.date)} · {s.club}
-                  </span>
-                  <span className="font-medium">
-                    {s.carry_yards ?? "–"}yd carry
-                  </span>
-                </li>
-              ))}
-            </ul>
-          ) : (
-            <p className="text-sm text-stone-500">No stats logged yet.</p>
-          )}
-          <Link
-            href="/stats"
-            className="mt-3 inline-block text-sm font-medium text-fairway-700 hover:underline"
-          >
-            View all stats →
-          </Link>
         </section>
       </div>
 
       <section className="card">
-        <h2 className="mb-2 text-sm font-semibold uppercase tracking-wide text-fairway-700">
-          Active Training Plan
+        <h2 className="mb-3 text-sm font-semibold uppercase tracking-wide text-fairway-700">
+          Goal Progress
         </h2>
-        {activePlan ? (
-          <div>
-            <p className="text-lg font-medium">{activePlan.primary_focus}</p>
-            <p className="mt-1 text-sm text-stone-600">
-              {activePlan.rationale.length > 160
-                ? `${activePlan.rationale.slice(0, 160)}…`
-                : activePlan.rationale}
-            </p>
-            <p className="mt-2 text-sm text-stone-500">
-              Week {getCurrentPlanWeek(activePlan)} of {activePlan.weeks}
-            </p>
-            <Link
-              href={`/training-plans/${activePlan.id}`}
-              className="mt-3 inline-block text-sm font-medium text-fairway-700 hover:underline"
-            >
-              View plan →
-            </Link>
-          </div>
-        ) : (
+        {activeGoals.length === 0 ? (
           <p className="text-sm text-stone-500">
-            No active training plan.{" "}
-            <Link href="/training-plans" className="text-fairway-700 hover:underline">
-              View plans
+            No goals set yet.{" "}
+            <Link href="/goals" className="text-fairway-700 hover:underline">
+              See how goals get suggested
             </Link>
             .
           </p>
+        ) : (
+          <div className="grid gap-3 sm:grid-cols-3">
+            {activeGoals.map((goal) => {
+              const progress = getGoalProgress(goal);
+              const pct =
+                progress.shotCount > 0
+                  ? Math.round(
+                      (progress.withinTargetCount / progress.shotCount) * 100
+                    )
+                  : null;
+              return (
+                <Link
+                  key={goal.id}
+                  href="/goals"
+                  className="rounded-lg border border-stone-200 p-3 transition-colors hover:border-fairway-400 hover:bg-fairway-50"
+                >
+                  <div className="flex items-center justify-between">
+                    <p className="font-medium">{goal.club}</p>
+                    {goal.status === "achieved" && (
+                      <span className="badge">achieved</span>
+                    )}
+                  </div>
+                  <p className="mt-1 text-xs text-stone-500">
+                    {pct !== null
+                      ? `${pct}% of ${progress.shotCount} shots on target`
+                      : "No shots logged yet"}
+                  </p>
+                </Link>
+              );
+            })}
+          </div>
         )}
       </section>
 

@@ -4,6 +4,7 @@ import {
   getLessons,
   getLessonById,
   getDrillById,
+  getReviewsByLessonId,
   formatDate,
   staticParamsFor,
 } from "@/lib/data";
@@ -19,6 +20,8 @@ export default function LessonDetailPage({
 }) {
   const lesson = getLessonById(params.id);
   if (!lesson) notFound();
+
+  const relatedReviews = getReviewsByLessonId(lesson.id);
 
   return (
     <div className="space-y-6">
@@ -87,6 +90,26 @@ export default function LessonDetailPage({
             <p className="mt-1 whitespace-pre-wrap text-sm text-stone-700">
               {lesson.video_review_notes}
             </p>
+          </>
+        )}
+
+        {relatedReviews.length > 0 && (
+          <>
+            <h2 className="mt-4 text-sm font-semibold uppercase tracking-wide text-fairway-700">
+              Related Reviews
+            </h2>
+            <ul className="mt-1 space-y-1 text-sm">
+              {relatedReviews.map((review) => (
+                <li key={review.id}>
+                  <Link
+                    href={`/reviews/${review.id}`}
+                    className="text-fairway-700 hover:underline"
+                  >
+                    {formatDate(review.date)} · {review.type}
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </>
         )}
       </div>

@@ -34,7 +34,45 @@
 - `/bag-map` page: a schematic top-down range (SVG, no external image) showing every club's actual shot pattern at once — a dispersion ellipse (mean ± standard deviation of carry and offline) per club, color-coded, with a time scroller over `getDispersionDates()` so the pattern can be scrubbed back to an earlier practice date and watched tighten (or not) as shots accumulate. Uses a trailing window (most recent 15 shots as of the scrubbed date, not all-time cumulative) specifically so regression is visible, not just convergence. A club's locked-in goal, where one exists, shows as a tick mark on the centerline at its target distance.
 - Goals are now **suggested, not manually specified**: replaced the `set-goal` skill with `suggest-goals`, which computes a first-time target from the trailing 15 (or fewer) real shots for a club (target = mean carry, tolerance/dispersion = 80% of the real standard deviations, all rounded to the nearest 5) rather than asking the user to invent numbers. It also re-evaluates existing goals: tightens automatically (75% of current tolerance/dispersion) when 8+ of the last 10 shots beat it, and flags — but never silently loosens — when 3 or fewer of the last 15 beat it. `log-session` and `analyze-range-screenshot` now proactively mention when a club crosses the 5-shot threshold for its first suggestion.
 
-## Phase 7 — ideas, not committed
+## Phase 7 — this batch
+
+- **Reversed the Phase 2 GitHub-Issue write path and removed manual "add"
+  forms entirely.** Deleted `app/lessons/add`, `app/sessions/plan`,
+  `app/rounds/add`, `MarkCompleteForm`, `SubmitIssueButton`,
+  `CopyJsonButton`, `DraftNotice`, `.github/workflows/ingest-data-issue.yml`,
+  and `scripts/ingest-issue.mjs`. The site is now a read-only dashboard —
+  looking at progress and reviewing a plan — and chatting with Claude is the
+  only way to write data (log a lesson/session/round, plan a session,
+  review a video or screenshot). Two independent signals pointed at this:
+  the Phase 2 hardening pass's own adversarial critique had already flagged
+  the GitHub-Issue write path's complexity as a real open question rather
+  than a clear win, and separately, actual use of the app surfaced that
+  planning/logging naturally happens *in conversation* with Claude right
+  after a lesson or session — a form that duplicates that as a manual
+  data-entry step wasn't earning its complexity. Backed by research into
+  how progress-tracking/training-log apps are actually used day to day plus
+  a UI/UX review of this app specifically.
+- Simplified top nav from 11 items to 8 (Dashboard, Lessons, Sessions,
+  Rounds, Progress, Stats, Goals, Bag Map). Drills, Training Plans, and
+  Reviews still exist as pages but are reached contextually (a drill link
+  from a lesson/review, a plan link from the sessions page, a review link
+  from a progress area or lesson) rather than living in primary nav.
+- Restructured the Dashboard into more of a synthesis view: Current Focus
+  and the Active Training Plan are now one card instead of two separate
+  ones telling overlapping stories; added a "Next Session" card that reads
+  any `status: "planned"` session so an upcoming plan is visible without
+  digging into `/sessions`; added a Goal Progress summary row so locked-in
+  per-club targets are visible at a glance, not just on `/goals`.
+- Added cross-links that were previously missing: a progress area's detail
+  page now lists related reviews (`getReviewsByFaultArea`, already existed
+  but wasn't used anywhere in the UI); a lesson's detail page now lists
+  reviews linked to it (new `getReviewsByLessonId` helper); the sessions
+  list page now surfaces the active training plan and links to the full
+  plans list.
+- Updated `CLAUDE.md` and `README.md` to describe the single chat-write-path
+  model instead of the old two-path (GitHub Issue / copy-JSON) description.
+
+## Phase 8 — ideas, not committed
 
 - Correlate stat trends against specific drills to see what's actually moving the needle
 - Calendar/reminder integration for session cadence

@@ -4,6 +4,7 @@ import {
   getProgressAreas,
   getProgressAreaById,
   faultFrequencyInRecentLessons,
+  getReviewsByFaultArea,
   formatDate,
   staticParamsFor,
 } from "@/lib/data";
@@ -24,6 +25,7 @@ export default function ProgressAreaDetailPage({
   const sortedTimeline = [...area.timeline].sort((a, b) =>
     b.date.localeCompare(a.date)
   );
+  const relatedReviews = getReviewsByFaultArea(area.id);
 
   return (
     <div className="space-y-6">
@@ -65,6 +67,32 @@ export default function ProgressAreaDetailPage({
             </li>
           ))}
         </ol>
+      )}
+
+      {relatedReviews.length > 0 && (
+        <>
+          <h2 className="text-sm font-semibold uppercase tracking-wide text-fairway-700">
+            Related Reviews
+          </h2>
+          <div className="space-y-3">
+            {relatedReviews.map((review) => (
+              <Link
+                key={review.id}
+                href={`/reviews/${review.id}`}
+                className="card block hover:border-fairway-400"
+              >
+                <div className="flex items-center justify-between">
+                  <p className="text-sm text-stone-500">
+                    {formatDate(review.date)} · {review.type}
+                  </p>
+                </div>
+                <p className="mt-2 line-clamp-2 text-sm text-stone-700">
+                  {review.verdict}
+                </p>
+              </Link>
+            ))}
+          </div>
+        </>
       )}
     </div>
   );

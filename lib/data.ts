@@ -254,6 +254,10 @@ export function getReviewsByFaultArea(areaId: string): Review[] {
   );
 }
 
+export function getReviewsByLessonId(lessonId: string): Review[] {
+  return getReviews().filter((r) => r.linked_lesson_id === lessonId);
+}
+
 export function getTrainingPlans(): TrainingPlan[] {
   return [...(trainingPlansData.plans as TrainingPlan[])].sort((a, b) =>
     b.created_date.localeCompare(a.created_date)

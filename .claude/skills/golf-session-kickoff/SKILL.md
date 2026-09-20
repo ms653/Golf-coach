@@ -1,13 +1,13 @@
 ---
 name: golf-session-kickoff
-description: Conversational front-end for planning today's range session — reads recent context (current focus, last lesson, last completed session, any active training plan) and asks a couple of quick questions before generating a plan, instead of requiring the user to fill out the /sessions/plan page. Use when the user says something like "heading to the range", "about to practice", "got an hour to hit balls", or "let's plan today's session".
+description: Conversational front-end for planning today's range session — reads recent context (current focus, last lesson, last completed session, any active training plan) and asks a couple of quick questions before generating a plan. Use when the user says something like "heading to the range", "about to practice", "got an hour to hit balls", or "let's plan today's session".
 ---
 
 # golf-session-kickoff
 
 A conversational starting point for a range session, for when the user
-mentions they're about to practice rather than using the `/sessions/plan`
-app page directly.
+mentions they're about to practice. This is the only way to plan a
+session — the app itself is a read-only dashboard.
 
 ## When to use
 

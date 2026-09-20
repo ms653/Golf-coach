@@ -6,24 +6,17 @@ Tailwind CSS, and plain React state. Data lives in `/data/*.json` in this repo �
 external database, no auth, single user.
 
 Hosted on GitHub Pages via `.github/workflows/deploy.yml` (builds on push to
-`main`). Because it's a static export, the app itself has no server to write
-back to `/data` directly — the "add" forms (add lesson, plan session, mark
-session complete) each have two ways to actually persist:
-
-1. **Submit via GitHub Issue** (automatic) — the button opens a pre-filled
-   GitHub issue containing the same JSON payload; `.github/workflows/ingest-data-issue.yml`
-   parses it, updates the right `/data/*.json` file, commits, pushes, and
-   closes the issue, usually within a minute. No chat needed. Requires the
-   repo's Settings → Actions → General → Workflow permissions be set to
-   "Read and write permissions" (one-time setup). **The repo is public**
-   (required for free GitHub Pages), so the workflow only processes issues
-   opened by the actual owner account (`ms653`) — anyone else's submission is
-   silently ignored rather than committed. Update that login in the workflow
-   if the owner account ever changes.
-2. **Copy JSON → paste to Claude** (manual) — the same payload, handed to
-   Claude in this project instead, where the matching skill below writes and
-   commits it. Useful when you'd rather Claude sanity-check the entry first,
-   or when you're already mid-conversation.
+`main`). The site itself is a **read-only dashboard** — a place to look at
+progress and review a plan, not to enter data into. There are no forms in
+the app. The only way to write to `/data` is by chatting with Claude here
+(in this project, or Claude Code with this repo open): describe a lesson,
+a session, a round, or share a video/screenshot, and the matching skill
+below writes the structured entry and commits/pushes it. This is
+deliberate, not a limitation worked around — planning a session or logging
+one is meant to happen in the same conversation as the coaching judgment
+behind it (what does this fault mean, what should today's session actually
+work on), not as a separate data-entry step. See `ROADMAP.md` for the
+earlier GitHub-Issue-based write path this replaced, and why.
 
 ## How to handle golf conversations
 

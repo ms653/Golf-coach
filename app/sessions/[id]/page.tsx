@@ -6,7 +6,6 @@ import {
   formatDate,
   staticParamsFor,
 } from "@/lib/data";
-import MarkCompleteForm from "@/components/MarkCompleteForm";
 
 export function generateStaticParams() {
   return staticParamsFor(getSessions());
@@ -75,7 +74,13 @@ export default function SessionDetailPage({
           )}
         </div>
       ) : (
-        <MarkCompleteForm sessionId={session.id} />
+        <div className="card">
+          <p className="text-sm text-stone-500">
+            Once you&apos;ve hit balls, tell Claude how it went (how it felt,
+            the miss pattern, any numbers) and it&apos;ll mark this session
+            complete.
+          </p>
+        </div>
       )}
     </div>
   );

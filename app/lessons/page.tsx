@@ -9,13 +9,16 @@ export default function LessonsPage() {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <h1 className="text-2xl font-bold text-stone-900">Lessons</h1>
-        <Link href="/lessons/add" className="btn-primary">
-          + Add Lesson
-        </Link>
+        <p className="text-sm text-stone-500">
+          Tell Claude about a lesson to log one.
+        </p>
       </div>
 
       {lessons.length === 0 ? (
-        <p className="text-sm text-stone-500">No lessons logged yet.</p>
+        <p className="text-sm text-stone-500">
+          No lessons logged yet. Tell Claude what your coach said after your
+          next lesson and it&apos;ll show up here.
+        </p>
       ) : (
         <ol className="space-y-4 border-l-2 border-fairway-200 pl-4">
           {lessons.map((lesson) => (

@@ -6,12 +6,9 @@ import { usePathname } from "next/navigation";
 const links = [
   { href: "/", label: "Dashboard" },
   { href: "/lessons", label: "Lessons" },
-  { href: "/drills", label: "Drills" },
   { href: "/sessions", label: "Sessions" },
   { href: "/rounds", label: "Rounds" },
   { href: "/progress", label: "Progress" },
-  { href: "/training-plans", label: "Plans" },
-  { href: "/reviews", label: "Reviews" },
   { href: "/stats", label: "Stats" },
   { href: "/goals", label: "Goals" },
   { href: "/bag-map", label: "Bag Map" },

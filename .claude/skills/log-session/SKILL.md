@@ -11,10 +11,9 @@ JSON in this repo, and commits it.
 ## When to use
 
 The user describes a session they already did — in the moment or after the
-fact — in plain language. This includes cases where they pasted a "Session
-JSON" preview from the `/sessions/plan` page (a planned session) and are now
-reporting it as done, or a `Mark Complete` JSON payload copied from a
-session detail page.
+fact — in plain language. This includes cases where the session was
+previously planned by `golf-session-kickoff`/`plan-session` and they're now
+reporting it as done.
 
 ## Steps
 

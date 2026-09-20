@@ -8,18 +8,15 @@ export default function RoundsPage() {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <h1 className="text-2xl font-bold text-stone-900">Rounds</h1>
-        <Link href="/rounds/add" className="btn-primary">
-          + Add Round
-        </Link>
+        <p className="text-sm text-stone-500">
+          Tell Claude about a round to log it.
+        </p>
       </div>
 
       {rounds.length === 0 ? (
         <p className="text-sm text-stone-500">
-          No rounds logged yet.{" "}
-          <Link href="/rounds/add" className="text-fairway-700 hover:underline">
-            Log your first one
-          </Link>
-          .
+          No rounds logged yet. Tell Claude about a real or simulator round
+          you played and it&apos;ll show up here.
         </p>
       ) : (
         <ol className="space-y-4 border-l-2 border-fairway-200 pl-4">
