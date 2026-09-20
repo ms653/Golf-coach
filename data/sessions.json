@@ -1,3 +1,66 @@
 {
-  "sessions": []
+  "sessions": [
+    {
+      "id": "s-2026-09-20",
+      "date": "2026-09-20",
+      "focus": "Club speed",
+      "ball_count_planned": 200,
+      "status": "planned",
+      "blocks": [
+        {
+          "name": "Warm-up",
+          "club": "wedge",
+          "balls": 30,
+          "drills": [],
+          "focus_note": "Loosen up, half-speed swings, no target focus yet."
+        },
+        {
+          "name": "Feel work",
+          "club": "7i",
+          "balls": 30,
+          "drills": [
+            "step-change-of-direction"
+          ],
+          "focus_note": "Slow, exaggerated reps building the feel for: Club speed."
+        },
+        {
+          "name": "Drill work",
+          "club": "7i",
+          "balls": 70,
+          "drills": [
+            "step-change-of-direction",
+            "pump-drill"
+          ],
+          "focus_note": "Full-speed reps of the drill(s) targeting: Club speed."
+        },
+        {
+          "name": "Transfer",
+          "club": "7i",
+          "balls": 40,
+          "drills": [],
+          "focus_note": "Normal full swings, carrying the drill feel into a real swing."
+        },
+        {
+          "name": "Pressure test",
+          "club": "7i",
+          "balls": 20,
+          "drills": [],
+          "focus_note": "Pick a target, score makes/misses, simulate on-course pressure."
+        },
+        {
+          "name": "Cool-down",
+          "club": "wedge",
+          "balls": 10,
+          "drills": [],
+          "focus_note": "Easy short-game shots to finish, no swing thoughts."
+        }
+      ],
+      "post_session_note": {
+        "how_it_felt": "",
+        "miss_pattern": "",
+        "self_rated_success": null
+      },
+      "stats_ids": []
+    }
+  ]
 }
