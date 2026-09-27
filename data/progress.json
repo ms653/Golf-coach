@@ -22,6 +22,12 @@
           "source": "review",
           "source_id": "r-2026-09-27-b",
           "note": "First range block on step-change-of-direction + pump-drill since the lesson. Block average (99yd carry, 106mph) is below baseline but steadier than it first looked from 3 individually-logged shots — expected while isolating the new movement. Numbers can't confirm the sequencing itself changed, that needs video."
+        },
+        {
+          "date": "2026-09-27",
+          "source": "review",
+          "source_id": "r-2026-09-27-c",
+          "note": "User's own read on the following contact block: \"little consistency at the start but felt like finding a good groove in the sequencing toward the end.\" Matches the numbers — launch/apex improved through the block at the same ball speed as the sequencing block. Worth checking at the next lesson whether this held up under transfer/pressure-test, or was specific to slow drill reps."
         }
       ]
     },
@@ -41,6 +47,12 @@
           "source": "review",
           "source_id": "r-2026-09-27-a",
           "note": "Warm-up wedge shot's low launch/apex looks like a thin or topped strike rather than a flush one, consistent with the toe/top pattern from Ramsdale. Today's session includes impact tape and coin-under-ball to get direct feedback instead of inferring from ball flight."
+        },
+        {
+          "date": "2026-09-27",
+          "source": "review",
+          "source_id": "r-2026-09-27-c",
+          "note": "Impact tape + coin-under-ball block: launch angle and apex both improved versus the earlier sequencing-drill block at the same ball speed (12deg/38ft vs 8deg/21ft), pointing at cleaner contact rather than just a club change. First real positive signal for this area since the Ramsdale toe/top pattern showed up."
         }
       ]
     },
@@ -66,6 +78,12 @@
           "source": "stats",
           "source_id": "st-2026-09-27-7i-d",
           "note": "Sequencing drill block average across 25 shots: 99yd carry, 106mph ball speed, 139yd total — below the ~150yd/131mph baseline but a steadier picture than the 3 individually-logged shots alone suggested (one of which was a 53.7yd offline outlier)."
+        },
+        {
+          "date": "2026-09-27",
+          "source": "stats",
+          "source_id": "st-2026-09-27-8i-d",
+          "note": "First 8i numbers: 25-shot average of 106mph ball speed, 117yd carry, 141yd total. Same ball speed as the earlier 7i block but higher carry/launch/apex despite less loft — cleaner contact as the session progressed, not just a different club."
         }
       ]
     }

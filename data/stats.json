@@ -77,6 +77,58 @@
       "apex_ft": 21,
       "offline_yards": null,
       "note": "Toptracer's own rolling average across the sequencing drill block (25 balls total) — the representative number for the block, not a single strike. The 3 individually-logged shots (st-2026-09-27-7i-a/b/c) were just the last 3 shown on screen and shouldn't be read as the whole block's story, especially the 53.7yd outlier. Average offline shown as 6ft (~2yd) with no direction arrow on screen, so left null rather than guessing left/right."
+    },
+    {
+      "id": "st-2026-09-27-8i-a",
+      "date": "2026-09-27",
+      "session_id": "s-2026-09-27",
+      "club": "8i",
+      "ball_speed_mph": 124,
+      "carry_yards": 164,
+      "total_yards": 173,
+      "launch_angle_deg": 13,
+      "apex_ft": 72,
+      "offline_yards": -22.7,
+      "note": "Contact drill block (impact tape + coin-under-ball). User switched from 7i to 8i partway through purely so Toptracer would chart the two blocks as separate clusters, not for any coaching reason. Curve/offline arrow pointed left; offline converted from 68ft."
+    },
+    {
+      "id": "st-2026-09-27-8i-b",
+      "date": "2026-09-27",
+      "session_id": "s-2026-09-27",
+      "club": "8i",
+      "ball_speed_mph": 123,
+      "carry_yards": 161,
+      "total_yards": 170,
+      "launch_angle_deg": 11,
+      "apex_ft": 62,
+      "offline_yards": -13.3,
+      "note": "Contact drill block. Offline converted from 40ft left shown on screen."
+    },
+    {
+      "id": "st-2026-09-27-8i-c",
+      "date": "2026-09-27",
+      "session_id": "s-2026-09-27",
+      "club": "8i",
+      "ball_speed_mph": 120,
+      "carry_yards": 145,
+      "total_yards": 161,
+      "launch_angle_deg": 10,
+      "apex_ft": 43,
+      "offline_yards": -35.7,
+      "note": "Contact drill block. Offline converted from 107ft left shown on screen — largest miss of the three visible, same left pattern as the other two."
+    },
+    {
+      "id": "st-2026-09-27-8i-d",
+      "date": "2026-09-27",
+      "session_id": "s-2026-09-27",
+      "club": "8i",
+      "ball_speed_mph": 106,
+      "carry_yards": 117,
+      "total_yards": 141,
+      "launch_angle_deg": 12,
+      "apex_ft": 38,
+      "offline_yards": null,
+      "note": "Toptracer's rolling average across the full 25-ball contact block — the representative number, per the lesson from the previous block (don't over-read the last 3 individual shots). Average offline shown as 38ft with no clear direction arrow, so left null. Notably: same 106mph ball speed as the earlier 7i sequencing-block average, but higher carry (117 vs 99yd), higher launch (12 vs 8deg) and nearly double the apex (38 vs 21ft) despite 8i having less loft than 7i -- consistent with the user's own read that contact was improving as the session went on."
     }
   ]
 }

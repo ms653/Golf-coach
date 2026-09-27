@@ -58,6 +58,31 @@
       "verdict": "Correcting the earlier read: the block average tells a calmer story than the 3 individual shots did — carry and ball speed are down from baseline as expected while grooving a new movement, but not the wild, outlier-driven picture the last 3 shots alone suggested. Numbers alone still can't confirm the sequencing itself has changed (that needs video), so this stays feel-building, not a verdict on progress — but there's no cause for concern here.",
       "cues_suggested": ["let the arms drop"],
       "drills_suggested": ["step-change-of-direction", "pump-drill"]
+    },
+    {
+      "id": "r-2026-09-27-c",
+      "date": "2026-09-27",
+      "type": "range-screenshot",
+      "context": "Toptracer screenshot from the contact drill block (25 balls, impact tape + coin-under-ball) of today's session s-2026-09-27. User switched from 7i to 8i partway through purely to keep the two blocks visually separate on Toptracer's chart, not for a coaching reason. Table showed the 3 most recent shots plus the block's rolling average; treating the average as the representative number this time, per the correction on the previous block.",
+      "linked_lesson_id": null,
+      "linked_session_id": "s-2026-09-27",
+      "observations": [
+        {
+          "note": "Block average: 106mph ball speed (identical to the earlier 7i sequencing-block average), but 117yd carry vs that block's 99yd, 12-degree launch vs 8, and 38ft apex vs 21 -- all up despite 8i carrying less loft than 7i. That combination (same speed, better launch conditions) points at cleaner contact, not just a different club.",
+          "fault_area": "center-face-contact"
+        },
+        {
+          "note": "User's own read -- 'little consistency at the start but felt like finding a good groove in the sequencing toward the end' -- lines up with the numbers: a session that starts rough and trends toward cleaner contact/launch is exactly what better sequencing arriving mid-block would look like.",
+          "fault_area": "sequencing-over-the-top"
+        },
+        {
+          "note": "First 8i numbers logged. The 3 individually-shown shots all missed left (13-36yd), but the block average's offline (38ft, direction not shown) suggests the full 25 shots were more centered than that sample implies -- consistent with the lesson from the prior block not to over-read a handful of shown shots.",
+          "fault_area": "distance-ball-speed-consistency"
+        }
+      ],
+      "verdict": "This reads as real progress within the session, not just noise: contact quality (launch angle, apex) improved from the sequencing block to this one at the same ball speed, matching the user's own sense that the sequencing feel clicked partway through. Left miss shows up in the 3 sampled shots but shouldn't be overweighted given the average tells a steadier story. Worth asking next lesson whether this improved feel held up under the transfer/pressure-test blocks that follow, or was specific to slow, deliberate drill reps.",
+      "cues_suggested": ["let the arms drop"],
+      "drills_suggested": ["impact-tape", "coin-under-ball"]
     }
   ]
 }
