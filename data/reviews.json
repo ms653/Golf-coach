@@ -146,6 +146,23 @@
       "verdict": "This directly answers the open question from the pressure test block: the 'more vertical' feel wasn't a correction, it was the same over-the-top pattern -- arms and club dropping steeply from the top before the hips clear, which is exactly what produces a steep, vertical-feeling downswing and the big right curve seen in both driver blocks today. The backswing and top position are genuinely fine; the fix is still entirely about the transition, matching the coach's existing 'let the arms drop' cue and the step-change/pump-drill work. Worth showing this exact video to Adrian -- it's the clearest evidence yet that the fault is identical on driver and irons, just more visible/costly on the longer club.",
       "cues_suggested": ["let the arms drop"],
       "drills_suggested": ["pump-drill", "step-change-of-direction"]
+    },
+    {
+      "id": "r-2026-09-27-g",
+      "date": "2026-09-27",
+      "type": "swing-video",
+      "context": "Longer real video (~9s), driver, same behind/side-on angle, filmed right after being given a specific in-the-moment cue (start the downswing with a lead-hip turn before the arms move, at ~80% speed). Contains 5 separate full swings back to back. Extracted native-rate frame bursts around the top-of-backswing/transition for 3 of the 5 swings (clear transition frames were captured for swings 1, 2, and 3; swings 4 and 5 were still paused at the top in the sampled frames, so sequencing wasn't assessable for those two from this video).",
+      "linked_lesson_id": null,
+      "linked_session_id": "s-2026-09-27",
+      "observations": [
+        {
+          "note": "All 3 assessable swings show the same pattern as r-2026-09-27-f: comparing the frame at the top (hips square) to frames ~0.1-0.15s later, the club/arms have already dropped roughly 45 degrees while the hips are still barely rotated. Hip rotation becomes visible only after the arms have started moving, in all 3 cases. The cue given between blocks (hip-first, 80% speed) does not appear to have changed the sequencing in these reps, despite being applied right before filming.",
+          "fault_area": "sequencing-over-the-top"
+        }
+      ],
+      "verdict": "Straightforward but not the answer hoped for: the arms-first pattern held across all 3 swings this video could assess, immediately after being given a specific cue to fix it. That's normal, not a bad sign on its own -- a verbal cue rarely overrides a well-grooved pattern in a handful of reps, especially at driver speed -- but it does mean the fix isn't going to come from a single range session of self-directed cueing. The two most useful next steps: (1) go back to slow, isolated pump-drill/step-change reps specifically with the driver (today's drill work was all 7-iron) before trying full-speed transfer again, and (2) bring this video to Adrian rather than continuing to self-diagnose -- a coach watching live can catch the exact moment and give real-time feedback in a way video review after the fact can't.",
+      "cues_suggested": ["let the arms drop"],
+      "drills_suggested": ["pump-drill", "step-change-of-direction"]
     }
   ]
 }
