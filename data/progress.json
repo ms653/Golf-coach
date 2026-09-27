@@ -34,6 +34,12 @@
           "source": "review",
           "source_id": "r-2026-09-27-d",
           "note": "Driver transfer block: big, consistent right curve across all shots (avg 38.3yd offline right) — the textbook signature of an over-the-top/outside-in path, and it showed up hard once full speed and the driver came back into it. The iron drill work didn't transfer here yet. Worth naming specifically to Adrian next lesson."
+        },
+        {
+          "date": "2026-09-27",
+          "source": "review",
+          "source_id": "r-2026-09-27-e",
+          "note": "Final pressure-test block: user felt they'd found \"the right driver feel\" but described it as more vertical than their iron swing — flagged as a concern, not confirmed as good, since a normal driver swing should feel shallower/flatter than irons, not steeper, and \"more vertical\" overlaps with what over-the-top looks like. Best distance of the day (193yd avg carry) but less consistent miss direction than the one-way-right transfer block. Genuinely good question for Adrian: driver hasn't been covered in a lesson yet."
         }
       ]
     },
@@ -96,6 +102,12 @@
           "source": "stats",
           "source_id": "st-2026-09-27-driver-d",
           "note": "First driver numbers: 25-ball transfer block average of 150mph ball speed but only 177yd carry, with a large consistent right curve (avg 38.3yd offline). High ball speed poorly converted to distance — heavy slice spin is the likely cause, not lack of power."
+        },
+        {
+          "date": "2026-09-27",
+          "source": "stats",
+          "source_id": "st-2026-09-27-driver-h",
+          "note": "Pressure test block average: 154mph ball speed, 193yd carry — the best driver distance of the day, ahead of the transfer block. One visible shot (332yd carry, 117.3yd offline) looks like a likely mis-tracked/anomalous reading, not a real swing; kept logged but not weighted."
         }
       ]
     }

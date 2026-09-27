@@ -104,6 +104,27 @@
       "verdict": "This is the clearest single piece of evidence today: two blocks of sequencing/contact drill work on irons didn't erase the pattern once the driver and full speed came back into it -- the ball flight (big, one-directional right curve) matches the over-the-top diagnosis directly, and it's very likely the same root cause as the toe/top misses at Ramsdale and the short/right pattern here: an outside-in downswing path. Worth naming this specifically to Adrian next lesson as evidence the drills are helping the feel in isolation but haven't yet transferred to full-speed driver swings.",
       "cues_suggested": ["let the arms drop"],
       "drills_suggested": ["two-tee-gate", "alignment-stick-headcover"]
+    },
+    {
+      "id": "r-2026-09-27-e",
+      "date": "2026-09-27",
+      "type": "range-screenshot",
+      "context": "Toptracer screenshot from the pressure test block (15 balls, driver, target/scoring) of today's session s-2026-09-27, the final block. User reported feeling like they'd found 'the right driver feel' but described it as feeling more vertical than their iron swing, and noted they've never had a lesson specifically on driver technique. One of the three visible shots (332yd carry, 117.3yd offline) looks like a likely mis-tracked/anomalous reading rather than a real swing -- logged as shown but not weighted in this interpretation.",
+      "linked_lesson_id": null,
+      "linked_session_id": "s-2026-09-27",
+      "observations": [
+        {
+          "note": "Block average (193yd carry, 154mph ball speed) is actually this session's best driver distance, ahead of the transfer block's 177yd/150mph -- so whatever changed didn't hurt distance. But miss direction went from one-way right in the transfer block to mixed (two shots pulled left, one huge right outlier) -- less consistent, not more.",
+          "fault_area": "distance-ball-speed-consistency"
+        },
+        {
+          "note": "The user's description of the new feel as 'more vertical' than irons is worth flagging rather than endorsing: a normal driver swing is generally shallower/flatter than an iron swing (the ball is teed forward and higher, wanting a slightly ascending strike), not steeper. Feeling MORE vertical with driver is a common thing golfers do when they swing harder at it, and a steep, vertical downswing plane is also literally what the over-the-top fault looks like -- so this could be the same sequencing issue showing up more with a longer club and more effort, rather than a genuinely new/correct feel. Numbers and a self-description can't confirm swing plane either way; this needs video or, better, direct coaching, since driver hasn't been covered in a lesson yet.",
+          "fault_area": "sequencing-over-the-top"
+        }
+      ],
+      "verdict": "Don't take 'felt like the right driver feel' at face value yet -- the description of it (more vertical) points the opposite direction from what a driver swing normally wants, and overlaps suspiciously with the known over-the-top pattern rather than a fix for it. The result (best distance of the day, but less consistent miss direction than the transfer block) doesn't clearly confirm or deny it either. This is a genuinely good, specific question for Adrian: driver-specific technique has never been covered, and 'should my driver swing feel different from my irons, and how' is worth asking directly rather than guessing from feel alone.",
+      "cues_suggested": [],
+      "drills_suggested": []
     }
   ]
 }

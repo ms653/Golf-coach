@@ -181,6 +181,58 @@
       "apex_ft": 51,
       "offline_yards": 38.3,
       "note": "Toptracer's rolling average across the full 20-ball transfer block -- the representative number. 150mph average ball speed with only 177yd carry and 38.3yd average offline right (converted from 115ft) is a large, consistent right miss, not scattered dispersion. First driver numbers logged; no prior baseline for this club."
+    },
+    {
+      "id": "st-2026-09-27-driver-e",
+      "date": "2026-09-27",
+      "session_id": "s-2026-09-27",
+      "club": "driver",
+      "ball_speed_mph": 166,
+      "carry_yards": 243,
+      "total_yards": 275,
+      "launch_angle_deg": 8,
+      "apex_ft": 62,
+      "offline_yards": -25.0,
+      "note": "Pressure test block (15 balls, scoring/target). Curved right (51ft) but finished left (75ft/25yd) -- pulled start line overriding the fade, unlike the transfer block's one-directional right pattern. Offline converted from 75ft left shown on screen."
+    },
+    {
+      "id": "st-2026-09-27-driver-f",
+      "date": "2026-09-27",
+      "session_id": "s-2026-09-27",
+      "club": "driver",
+      "ball_speed_mph": 172,
+      "carry_yards": 250,
+      "total_yards": 287,
+      "launch_angle_deg": 6,
+      "apex_ft": 57,
+      "offline_yards": -7.7,
+      "note": "Pressure test block. Best result of the three visible -- long and close to the line. Offline converted from 23ft left shown on screen."
+    },
+    {
+      "id": "st-2026-09-27-driver-g",
+      "date": "2026-09-27",
+      "session_id": "s-2026-09-27",
+      "club": "driver",
+      "ball_speed_mph": 164,
+      "carry_yards": 332,
+      "total_yards": 335,
+      "launch_angle_deg": 12,
+      "apex_ft": 206,
+      "offline_yards": 117.3,
+      "note": "Pressure test block. Flagging as a likely anomalous reading rather than a real representative swing: 332yd carry at only 164mph ball speed and a 206ft apex is physically implausible for this user's numbers, and 117.3yd offline (converted from 352ft right) on a shot that also carried 332yd forward is an extreme combination. Possibly a mis-tracked shot (deflection, sensor glitch) rather than a true reflection of one swing. Kept as shown on screen rather than omitted, per policy of not inventing/adjusting numbers, but shouldn't be weighted as a real data point without corroboration."
+    },
+    {
+      "id": "st-2026-09-27-driver-h",
+      "date": "2026-09-27",
+      "session_id": "s-2026-09-27",
+      "club": "driver",
+      "ball_speed_mph": 154,
+      "carry_yards": 193,
+      "total_yards": 225,
+      "launch_angle_deg": 9,
+      "apex_ft": 62,
+      "offline_yards": 18.3,
+      "note": "Toptracer's rolling average across the full 15-ball pressure test block -- the representative number, per the now-established lesson not to over-read a handful of shown shots (especially with one likely-anomalous reading, st-2026-09-27-driver-g, in the visible sample). Offline converted from 55ft right. Notably higher carry/ball speed than the transfer block average (193yd/154mph vs 177yd/150mph), so distance-wise this was the best driver block of the day even though the miss direction was less consistent than the transfer block's one-way right pattern."
     }
   ]
 }
