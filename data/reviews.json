@@ -184,6 +184,23 @@
       "verdict": "Can't give a clean yes/no on whether the specific sequencing fault has improved since this video -- the camera angle is too different from today's to make a confident before/after call, and that's a real limitation, not a way of avoiding the question. What's genuinely visible either way: tempo has changed (a much shorter pause at the top now), and there's a hint of earlier leg/weight movement in the older footage that today's swings didn't show, though it's not conclusive from this angle. The practical fix for 'am I improving' going forward is boring but real: film future range sessions from the same angle (behind/side-on, like today) so a real year-from-now comparison is actually possible, rather than relying on old footage shot for a different purpose.",
       "cues_suggested": [],
       "drills_suggested": []
+    },
+    {
+      "id": "r-2026-09-27-i",
+      "date": "2026-09-27",
+      "type": "swing-video",
+      "context": "Old iron swing (~1 year old, per user), this time filmed from behind/side-on -- the same angle as today's footage, unlike the earlier face-on driver clip (r-2026-09-27-h). This is the first genuinely direct, apples-to-apples comparison to today's swings.",
+      "linked_lesson_id": null,
+      "linked_session_id": null,
+      "observations": [
+        {
+          "note": "Same pattern as every swing checked today: at the top, hips square. Within about 4 frames (~0.07s), the club has already dropped 30-45 degrees while the hips are still barely rotated; hip rotation only becomes clearly visible a few frames later, closer to impact. From a directly comparable angle, this looks the same as today's driver swings (r-2026-09-27-f, r-2026-09-27-g) -- not visibly better or worse.",
+          "fault_area": "sequencing-over-the-top"
+        }
+      ],
+      "verdict": "This is the direct comparison the earlier face-on video couldn't give: from the same angle, a year apart, the transition looks the same -- arms/club initiating before the hips clear, both then and now. That's a genuinely honest answer to 'am I not getting any better': on this specific fault, from this evidence, no clear change is visible over a year. That's worth taking seriously rather than softening, but it also points at what's actually needed -- this fault has been present long enough and through enough unsupervised practice that it's very unlikely to resolve through more range time alone. It needs sustained, coached repetition (ideally checked in most lessons going forward, not just when it comes up), not another solo session.",
+      "cues_suggested": ["let the arms drop"],
+      "drills_suggested": ["pump-drill", "step-change-of-direction"]
     }
   ]
 }
