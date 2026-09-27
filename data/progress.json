@@ -21,7 +21,7 @@
           "date": "2026-09-27",
           "source": "review",
           "source_id": "r-2026-09-27-b",
-          "note": "First range block on step-change-of-direction + pump-drill since the lesson. Contact was rough (well below baseline carry/ball speed) which is expected while isolating the new movement — numbers can't confirm the sequencing itself changed, that needs video."
+          "note": "First range block on step-change-of-direction + pump-drill since the lesson. Block average (99yd carry, 106mph) is below baseline but steadier than it first looked from 3 individually-logged shots — expected while isolating the new movement. Numbers can't confirm the sequencing itself changed, that needs video."
         }
       ]
     },
@@ -64,8 +64,8 @@
         {
           "date": "2026-09-27",
           "source": "stats",
-          "source_id": "st-2026-09-27-7i-b",
-          "note": "3 shots logged during the sequencing drill block, all below baseline (69-134yd carry, 101-111mph ball speed vs ~150yd/131mph). One shot 53.7yd offline, a clear outlier. Consistent with drill-isolation contact, not a new pattern."
+          "source_id": "st-2026-09-27-7i-d",
+          "note": "Sequencing drill block average across 25 shots: 99yd carry, 106mph ball speed, 139yd total — below the ~150yd/131mph baseline but a steadier picture than the 3 individually-logged shots alone suggested (one of which was a 53.7yd offline outlier)."
         }
       ]
     }

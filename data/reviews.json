@@ -42,20 +42,20 @@
       "id": "r-2026-09-27-b",
       "date": "2026-09-27",
       "type": "range-screenshot",
-      "context": "Toptracer screenshot from the sequencing drill block (25 balls, 7i, step-change-of-direction + pump-drill) of today's session s-2026-09-27. Table showed only the 3 most recent shots plus a rolling average; the dispersion scatter plot showed more shots from earlier in the block with no numeric readout available.",
+      "context": "Toptracer screenshot from the sequencing drill block (25 balls, 7i, step-change-of-direction + pump-drill) of today's session s-2026-09-27. Table showed the 3 most recent shots plus a rolling average; user confirmed the average is the representative number for the full 25-ball block, not the 3 individual shots (which were just whatever happened to be last on screen, including one outlier).",
       "linked_lesson_id": null,
       "linked_session_id": "s-2026-09-27",
       "observations": [
         {
-          "note": "All three visible shots are well below the ~150yd average / 183yd flush baseline for 7-iron carry (69, 134, 116yd), and ball speed (101-111mph) is well under the 131mph flush number from 9/12. Exactly what you'd expect while isolating a brand-new sequencing move rather than swinging normally — matches the user's own read that contact felt poor.",
+          "note": "Block average (99yd carry, 106mph ball speed, 8-degree launch, 139yd total) is below the ~150yd/131mph baseline but not dramatically — a much steadier picture than the 3 individually-logged shots suggested on their own, once the 53.7yd-offline outlier isn't over-weighted. Consistent with isolating a new sequencing move rather than swinging normally.",
           "fault_area": "sequencing-over-the-top"
         },
         {
-          "note": "One shot (116yd carry) was 53.7yd offline right — a big outlier next to the other two (7.7yd right, 4.7yd left). Worth a mental note but not a concern on its own: a step-change/pump-drill block deliberately exaggerates the transition, and a wild miss or two while the body finds a new pattern is normal, not a new fault.",
+          "note": "Average offline was 6ft (~2yd), direction not shown — much tighter than the individual outlier implied. The 3 logged shots remain real data points, just not representative of the block on their own; the average is the number to trust for this block.",
           "fault_area": "distance-ball-speed-consistency"
         }
       ],
-      "verdict": "Nothing here changes the sequencing picture — rough numbers during this block are the expected cost of grooving a new movement, not a step backward. The one shot with reasonable contact (134yd carry, 13-degree launch) is closer to a normal strike and worth noting as a sign the feel is at least sometimes landing correctly. Numbers alone can't confirm whether the sequencing itself has actually changed (that needs video), so treat this block as feel-building, not a verdict on progress.",
+      "verdict": "Correcting the earlier read: the block average tells a calmer story than the 3 individual shots did — carry and ball speed are down from baseline as expected while grooving a new movement, but not the wild, outlier-driven picture the last 3 shots alone suggested. Numbers alone still can't confirm the sequencing itself has changed (that needs video), so this stays feel-building, not a verdict on progress — but there's no cause for concern here.",
       "cues_suggested": ["let the arms drop"],
       "drills_suggested": ["step-change-of-direction", "pump-drill"]
     }

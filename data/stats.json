@@ -64,6 +64,19 @@
       "apex_ft": 39,
       "offline_yards": 53.7,
       "note": "Sequencing drill block. Large miss — 53.7yd right is a big outlier versus the other two shots' offline. Offline converted from 161ft right shown on screen; worth noting but not alarming given this drill block is explicitly about grooving a new movement pattern, not contact quality."
+    },
+    {
+      "id": "st-2026-09-27-7i-d",
+      "date": "2026-09-27",
+      "session_id": "s-2026-09-27",
+      "club": "7i",
+      "ball_speed_mph": 106,
+      "carry_yards": 99,
+      "total_yards": 139,
+      "launch_angle_deg": 8,
+      "apex_ft": 21,
+      "offline_yards": null,
+      "note": "Toptracer's own rolling average across the sequencing drill block (25 balls total) — the representative number for the block, not a single strike. The 3 individually-logged shots (st-2026-09-27-7i-a/b/c) were just the last 3 shown on screen and shouldn't be read as the whole block's story, especially the 53.7yd outlier. Average offline shown as 6ft (~2yd) with no direction arrow on screen, so left null rather than guessing left/right."
     }
   ]
 }
