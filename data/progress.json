@@ -29,6 +29,12 @@
           "source": "round",
           "source_id": "round-2026-09-17",
           "note": "First on-course evidence for this area: toe and topped strikes off the tee all round at Ramsdale (18-hole par 3, shot 105)."
+        },
+        {
+          "date": "2026-09-27",
+          "source": "review",
+          "source_id": "r-2026-09-27-a",
+          "note": "Warm-up wedge shot's low launch/apex looks like a thin or topped strike rather than a flush one, consistent with the toe/top pattern from Ramsdale. Today's session includes impact tape and coin-under-ball to get direct feedback instead of inferring from ball flight."
         }
       ]
     },
@@ -42,6 +48,12 @@
           "source": "stats",
           "source_id": "st-2026-09-12-7i-a",
           "note": "Flush 7-iron: 131 mph ball speed, 14 degree launch, 183yd carry / 213yd total. Well above the ~150yd average carry, showing the gap between best and average strikes."
+        },
+        {
+          "date": "2026-09-27",
+          "source": "stats",
+          "source_id": "st-2026-09-27-50w-a",
+          "note": "First wedge numbers logged: 89.5 mph ball speed, 85.4yd carry, 117yd total on a 50-degree wedge. No prior wedge baseline to compare against."
         }
       ]
     }

@@ -16,6 +16,27 @@
       "verdict": "This confirms what came up in today's lesson: the downswing is being started by the arms/shoulders instead of the lower body, which pushes the club out and over the ideal path and shows up as the over-the-top move. The fix isn't a separate swing-plane correction — it's getting the hips to initiate the downswing first so the arms are just along for the ride, matching the coach's \"let the arms drop\" cue.",
       "cues_suggested": ["let the arms drop"],
       "drills_suggested": ["pump-drill", "step-change-of-direction"]
+    },
+    {
+      "id": "r-2026-09-27-a",
+      "date": "2026-09-27",
+      "type": "range-screenshot",
+      "context": "Toptracer screenshot from the warm-up block of today's session (s-2026-09-27), 50-degree wedge. One shot's numbers shown; user separately reported 8 good strikes and 2 mishits (one toe, one top) across the 10-shot warm-up.",
+      "linked_lesson_id": null,
+      "linked_session_id": "s-2026-09-27",
+      "observations": [
+        {
+          "note": "13-degree launch and a 25ft apex are both low for a full 50-degree wedge swing carrying 85 yards — that combination (flat, penetrating flight rather than the higher, softer-landing shot a 50-degree loft normally produces) is the classic signature of a thin or topped strike, not a flush one. It's plausible this particular shot is the 'top' the user mentioned rather than one of the 8 good ones, despite the distance looking reasonable.",
+          "fault_area": "center-face-contact"
+        },
+        {
+          "note": "First wedge numbers logged (previous stats history was 7-iron only): 89.5mph ball speed, 85.4yd carry, 117yd total. No baseline exists yet for this club to compare against.",
+          "fault_area": "distance-ball-speed-consistency"
+        }
+      ],
+      "verdict": "Distance looks fine on paper, but the launch angle/apex combination doesn't match what a clean 50-degree wedge strike should look like — worth treating this as likely one of today's mishits rather than a good strike, and a reminder that flight shape (not just carry distance) is the tell for contact quality on partial/full wedge shots. Keep using the impact tape from today's plan to confirm toe vs. center vs thin directly rather than inferring it from ball flight.",
+      "cues_suggested": [],
+      "drills_suggested": ["impact-tape", "coin-under-ball"]
     }
   ]
 }

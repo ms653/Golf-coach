@@ -12,6 +12,19 @@
       "apex_ft": null,
       "offline_yards": null,
       "note": "Flush hit, best of the range session."
+    },
+    {
+      "id": "st-2026-09-27-50w-a",
+      "date": "2026-09-27",
+      "session_id": "s-2026-09-27",
+      "club": "50° wedge",
+      "ball_speed_mph": 89.5,
+      "carry_yards": 85.4,
+      "total_yards": 117,
+      "launch_angle_deg": 13,
+      "apex_ft": 25,
+      "offline_yards": null,
+      "note": "Warm-up block, one of 10 shots (8 good, 1 toe, 1 top per user). Toptracer also showed flat carry 94.7yd, curve 10ft, landing angle 25deg, hang time 3.2s — none of those map to existing schema fields, kept here for reference. Offline distance not shown on this screen."
     }
   ]
 }
