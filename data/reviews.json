@@ -125,6 +125,27 @@
       "verdict": "Don't take 'felt like the right driver feel' at face value yet -- the description of it (more vertical) points the opposite direction from what a driver swing normally wants, and overlaps suspiciously with the known over-the-top pattern rather than a fix for it. The result (best distance of the day, but less consistent miss direction than the transfer block) doesn't clearly confirm or deny it either. This is a genuinely good, specific question for Adrian: driver-specific technique has never been covered, and 'should my driver swing feel different from my irons, and how' is worth asking directly rather than guessing from feel alone.",
       "cues_suggested": [],
       "drills_suggested": []
+    },
+    {
+      "id": "r-2026-09-27-f",
+      "date": "2026-09-27",
+      "type": "swing-video",
+      "context": "Real video (not stills), driver, filmed from behind/side-on during extra balls hit after the planned session. Extracted at native frame rate (~51-62fps) around the top-of-backswing/transition, giving many frames bracketing that moment -- full sequencing assessment is in scope, not just position checks.",
+      "linked_lesson_id": null,
+      "linked_session_id": "s-2026-09-27",
+      "observations": [
+        {
+          "note": "Top-of-backswing position itself looks solid: full shoulder turn, good width, hands reach a proper height. The backswing isn't the issue.",
+          "fault_area": "sequencing-over-the-top"
+        },
+        {
+          "note": "Comparing the frame at the top (hips still square, fully coiled) to the very next frames (~0.06-0.08s later): the club and arms have already dropped substantially -- the shaft swings from vertical-behind-the-head down through roughly 45 degrees -- while the hips show almost no rotation yet. The lower body only starts visibly opening a couple of frames after that. This is the arms/club initiating the downswing before the lower body, the same pattern the 9/12 lesson's video review found with the 7-iron (r-2026-09-12-a) -- now confirmed on driver, at full speed, not just irons or drills.",
+          "fault_area": "sequencing-over-the-top"
+        }
+      ],
+      "verdict": "This directly answers the open question from the pressure test block: the 'more vertical' feel wasn't a correction, it was the same over-the-top pattern -- arms and club dropping steeply from the top before the hips clear, which is exactly what produces a steep, vertical-feeling downswing and the big right curve seen in both driver blocks today. The backswing and top position are genuinely fine; the fix is still entirely about the transition, matching the coach's existing 'let the arms drop' cue and the step-change/pump-drill work. Worth showing this exact video to Adrian -- it's the clearest evidence yet that the fault is identical on driver and irons, just more visible/costly on the longer club.",
+      "cues_suggested": ["let the arms drop"],
+      "drills_suggested": ["pump-drill", "step-change-of-direction"]
     }
   ]
 }
