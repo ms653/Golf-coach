@@ -16,6 +16,12 @@
           "source": "review",
           "source_id": "r-2026-09-12-a",
           "note": "Swing-video review confirmed arms/shoulders start the downswing before the hips clear; suggested pump-drill and step-change-of-direction."
+        },
+        {
+          "date": "2026-09-27",
+          "source": "review",
+          "source_id": "r-2026-09-27-b",
+          "note": "First range block on step-change-of-direction + pump-drill since the lesson. Contact was rough (well below baseline carry/ball speed) which is expected while isolating the new movement — numbers can't confirm the sequencing itself changed, that needs video."
         }
       ]
     },
@@ -54,6 +60,12 @@
           "source": "stats",
           "source_id": "st-2026-09-27-50w-a",
           "note": "First wedge numbers logged: 89.5 mph ball speed, 85.4yd carry, 117yd total on a 50-degree wedge. No prior wedge baseline to compare against."
+        },
+        {
+          "date": "2026-09-27",
+          "source": "stats",
+          "source_id": "st-2026-09-27-7i-b",
+          "note": "3 shots logged during the sequencing drill block, all below baseline (69-134yd carry, 101-111mph ball speed vs ~150yd/131mph). One shot 53.7yd offline, a clear outlier. Consistent with drill-isolation contact, not a new pattern."
         }
       ]
     }

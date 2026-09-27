@@ -25,6 +25,45 @@
       "apex_ft": 25,
       "offline_yards": null,
       "note": "Warm-up block, one of 10 shots (8 good, 1 toe, 1 top per user). Toptracer also showed flat carry 94.7yd, curve 10ft, landing angle 25deg, hang time 3.2s — none of those map to existing schema fields, kept here for reference. Offline distance not shown on this screen."
+    },
+    {
+      "id": "st-2026-09-27-7i-a",
+      "date": "2026-09-27",
+      "session_id": "s-2026-09-27",
+      "club": "7i",
+      "ball_speed_mph": 110,
+      "carry_yards": 69,
+      "total_yards": 133,
+      "launch_angle_deg": 4,
+      "apex_ft": 5,
+      "offline_yards": 7.7,
+      "note": "Sequencing drill block (step-change-of-direction + pump-drill). Very low launch/apex for a 7i — thin/low contact, consistent with the drill isolating a new movement rather than a clean strike. Offline converted from 23ft right shown on screen (Toptracer displayed this in feet, not yards)."
+    },
+    {
+      "id": "st-2026-09-27-7i-b",
+      "date": "2026-09-27",
+      "session_id": "s-2026-09-27",
+      "club": "7i",
+      "ball_speed_mph": 111,
+      "carry_yards": 134,
+      "total_yards": 171,
+      "launch_angle_deg": 13,
+      "apex_ft": 33,
+      "offline_yards": -4.7,
+      "note": "Sequencing drill block. Best-contact shot of the three visible — launch/apex/carry all close to a normal strike. Offline converted from 14ft left shown on screen."
+    },
+    {
+      "id": "st-2026-09-27-7i-c",
+      "date": "2026-09-27",
+      "session_id": "s-2026-09-27",
+      "club": "7i",
+      "ball_speed_mph": 101,
+      "carry_yards": 116,
+      "total_yards": 131,
+      "launch_angle_deg": 16,
+      "apex_ft": 39,
+      "offline_yards": 53.7,
+      "note": "Sequencing drill block. Large miss — 53.7yd right is a big outlier versus the other two shots' offline. Offline converted from 161ft right shown on screen; worth noting but not alarming given this drill block is explicitly about grooving a new movement pattern, not contact quality."
     }
   ]
 }

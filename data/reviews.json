@@ -37,6 +37,27 @@
       "verdict": "Distance looks fine on paper, but the launch angle/apex combination doesn't match what a clean 50-degree wedge strike should look like — worth treating this as likely one of today's mishits rather than a good strike, and a reminder that flight shape (not just carry distance) is the tell for contact quality on partial/full wedge shots. Keep using the impact tape from today's plan to confirm toe vs. center vs thin directly rather than inferring it from ball flight.",
       "cues_suggested": [],
       "drills_suggested": ["impact-tape", "coin-under-ball"]
+    },
+    {
+      "id": "r-2026-09-27-b",
+      "date": "2026-09-27",
+      "type": "range-screenshot",
+      "context": "Toptracer screenshot from the sequencing drill block (25 balls, 7i, step-change-of-direction + pump-drill) of today's session s-2026-09-27. Table showed only the 3 most recent shots plus a rolling average; the dispersion scatter plot showed more shots from earlier in the block with no numeric readout available.",
+      "linked_lesson_id": null,
+      "linked_session_id": "s-2026-09-27",
+      "observations": [
+        {
+          "note": "All three visible shots are well below the ~150yd average / 183yd flush baseline for 7-iron carry (69, 134, 116yd), and ball speed (101-111mph) is well under the 131mph flush number from 9/12. Exactly what you'd expect while isolating a brand-new sequencing move rather than swinging normally — matches the user's own read that contact felt poor.",
+          "fault_area": "sequencing-over-the-top"
+        },
+        {
+          "note": "One shot (116yd carry) was 53.7yd offline right — a big outlier next to the other two (7.7yd right, 4.7yd left). Worth a mental note but not a concern on its own: a step-change/pump-drill block deliberately exaggerates the transition, and a wild miss or two while the body finds a new pattern is normal, not a new fault.",
+          "fault_area": "distance-ball-speed-consistency"
+        }
+      ],
+      "verdict": "Nothing here changes the sequencing picture — rough numbers during this block are the expected cost of grooving a new movement, not a step backward. The one shot with reasonable contact (134yd carry, 13-degree launch) is closer to a normal strike and worth noting as a sign the feel is at least sometimes landing correctly. Numbers alone can't confirm whether the sequencing itself has actually changed (that needs video), so treat this block as feel-building, not a verdict on progress.",
+      "cues_suggested": ["let the arms drop"],
+      "drills_suggested": ["step-change-of-direction", "pump-drill"]
     }
   ]
 }
