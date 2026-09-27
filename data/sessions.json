@@ -61,6 +61,63 @@
         "self_rated_success": null
       },
       "stats_ids": []
+    },
+    {
+      "id": "s-2026-09-27",
+      "date": "2026-09-27",
+      "focus": "Sequencing transfer + center-face contact (tee shots)",
+      "ball_count_planned": 100,
+      "status": "planned",
+      "blocks": [
+        {
+          "name": "Warm-up",
+          "club": "wedge",
+          "balls": 10,
+          "drills": [],
+          "focus_note": "Loosen up, half-speed swings, no target focus yet."
+        },
+        {
+          "name": "Drill work",
+          "club": "7i",
+          "balls": 25,
+          "drills": ["step-change-of-direction", "pump-drill"],
+          "focus_note": "Sequencing, per the plan's week 2 theme: full-speed reps now, not slow isolation."
+        },
+        {
+          "name": "Drill work",
+          "club": "7i",
+          "balls": 25,
+          "drills": ["impact-tape", "coin-under-ball"],
+          "focus_note": "Center-face contact: impact tape to see toe/heel pattern directly, coin-under-ball for low-point control against the topped strikes from Ramsdale."
+        },
+        {
+          "name": "Transfer",
+          "club": "driver",
+          "balls": 20,
+          "drills": [],
+          "focus_note": "Normal full tee shots, carrying both feels in — this is where the toe/top misses actually showed up on the course."
+        },
+        {
+          "name": "Pressure test",
+          "club": "driver",
+          "balls": 15,
+          "drills": [],
+          "focus_note": "Pick a target, score makes/misses, simulate on-course pressure off the tee."
+        },
+        {
+          "name": "Cool-down",
+          "club": "wedge",
+          "balls": 5,
+          "drills": [],
+          "focus_note": "Easy short-game shots to finish, no swing thoughts."
+        }
+      ],
+      "post_session_note": {
+        "how_it_felt": "",
+        "miss_pattern": "",
+        "self_rated_success": null
+      },
+      "stats_ids": []
     }
   ]
 }
