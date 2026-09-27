@@ -129,6 +129,58 @@
       "apex_ft": 38,
       "offline_yards": null,
       "note": "Toptracer's rolling average across the full 25-ball contact block — the representative number, per the lesson from the previous block (don't over-read the last 3 individual shots). Average offline shown as 38ft with no clear direction arrow, so left null. Notably: same 106mph ball speed as the earlier 7i sequencing-block average, but higher carry (117 vs 99yd), higher launch (12 vs 8deg) and nearly double the apex (38 vs 21ft) despite 8i having less loft than 7i -- consistent with the user's own read that contact was improving as the session went on."
+    },
+    {
+      "id": "st-2026-09-27-driver-a",
+      "date": "2026-09-27",
+      "session_id": "s-2026-09-27",
+      "club": "driver",
+      "ball_speed_mph": 155,
+      "carry_yards": 212,
+      "total_yards": 220,
+      "launch_angle_deg": 16,
+      "apex_ft": 120,
+      "offline_yards": 77.0,
+      "note": "Transfer block (normal full tee shots). Highest ball speed of the three visible (155mph) but only 212yd carry -- poor speed-to-distance conversion, consistent with heavy slice spin from a big right curve (149ft curve, converted from 231ft/77yd offline right)."
+    },
+    {
+      "id": "st-2026-09-27-driver-b",
+      "date": "2026-09-27",
+      "session_id": "s-2026-09-27",
+      "club": "driver",
+      "ball_speed_mph": 143,
+      "carry_yards": 172,
+      "total_yards": 200,
+      "launch_angle_deg": 10,
+      "apex_ft": 41,
+      "offline_yards": 68.7,
+      "note": "Transfer block. Offline converted from 206ft right shown on screen."
+    },
+    {
+      "id": "st-2026-09-27-driver-c",
+      "date": "2026-09-27",
+      "session_id": "s-2026-09-27",
+      "club": "driver",
+      "ball_speed_mph": 150,
+      "carry_yards": 186,
+      "total_yards": 210,
+      "launch_angle_deg": 6,
+      "apex_ft": 41,
+      "offline_yards": 27.3,
+      "note": "Transfer block. Smallest miss of the three visible but still 27.3yd right. Offline converted from 82ft right shown on screen."
+    },
+    {
+      "id": "st-2026-09-27-driver-d",
+      "date": "2026-09-27",
+      "session_id": "s-2026-09-27",
+      "club": "driver",
+      "ball_speed_mph": 150,
+      "carry_yards": 177,
+      "total_yards": 207,
+      "launch_angle_deg": 7,
+      "apex_ft": 51,
+      "offline_yards": 38.3,
+      "note": "Toptracer's rolling average across the full 20-ball transfer block -- the representative number. 150mph average ball speed with only 177yd carry and 38.3yd average offline right (converted from 115ft) is a large, consistent right miss, not scattered dispersion. First driver numbers logged; no prior baseline for this club."
     }
   ]
 }

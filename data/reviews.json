@@ -83,6 +83,27 @@
       "verdict": "This reads as real progress within the session, not just noise: contact quality (launch angle, apex) improved from the sequencing block to this one at the same ball speed, matching the user's own sense that the sequencing feel clicked partway through. Left miss shows up in the 3 sampled shots but shouldn't be overweighted given the average tells a steadier story. Worth asking next lesson whether this improved feel held up under the transfer/pressure-test blocks that follow, or was specific to slow, deliberate drill reps.",
       "cues_suggested": ["let the arms drop"],
       "drills_suggested": ["impact-tape", "coin-under-ball"]
+    },
+    {
+      "id": "r-2026-09-27-d",
+      "date": "2026-09-27",
+      "type": "range-screenshot",
+      "context": "Toptracer screenshot from the transfer block (20 balls, driver, normal full tee shots) of today's session s-2026-09-27. First driver numbers ever logged. User's own read: 'decently consistent but all a bit short and curving heavy right.'",
+      "linked_lesson_id": null,
+      "linked_session_id": "s-2026-09-27",
+      "observations": [
+        {
+          "note": "A big, consistent right curve across all 4 rows (108-149ft of curve, 27-77yd final offline right, all in the same direction) on the club with the most club speed and longest swing arc is the textbook place for an over-the-top move to show up hardest -- an outside-in path with the face left open relative to it produces exactly this shape. This is a more direct, current-full-speed signal on the actual fault than the earlier iron drill blocks could give.",
+          "fault_area": "sequencing-over-the-top"
+        },
+        {
+          "note": "Ball speed was genuinely high (143-155mph, average 150) -- matches the 'fast, powerful swing ahead of its consistency' baseline -- but carry (avg 177yd) badly underperforms that speed. Heavy slice spin from the same path issue is almost certainly what's eating the distance, not a lack of power. First driver baseline established.",
+          "fault_area": "distance-ball-speed-consistency"
+        }
+      ],
+      "verdict": "This is the clearest single piece of evidence today: two blocks of sequencing/contact drill work on irons didn't erase the pattern once the driver and full speed came back into it -- the ball flight (big, one-directional right curve) matches the over-the-top diagnosis directly, and it's very likely the same root cause as the toe/top misses at Ramsdale and the short/right pattern here: an outside-in downswing path. Worth naming this specifically to Adrian next lesson as evidence the drills are helping the feel in isolation but haven't yet transferred to full-speed driver swings.",
+      "cues_suggested": ["let the arms drop"],
+      "drills_suggested": ["two-tee-gate", "alignment-stick-headcover"]
     }
   ]
 }

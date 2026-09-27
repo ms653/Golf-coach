@@ -28,6 +28,12 @@
           "source": "review",
           "source_id": "r-2026-09-27-c",
           "note": "User's own read on the following contact block: \"little consistency at the start but felt like finding a good groove in the sequencing toward the end.\" Matches the numbers — launch/apex improved through the block at the same ball speed as the sequencing block. Worth checking at the next lesson whether this held up under transfer/pressure-test, or was specific to slow drill reps."
+        },
+        {
+          "date": "2026-09-27",
+          "source": "review",
+          "source_id": "r-2026-09-27-d",
+          "note": "Driver transfer block: big, consistent right curve across all shots (avg 38.3yd offline right) — the textbook signature of an over-the-top/outside-in path, and it showed up hard once full speed and the driver came back into it. The iron drill work didn't transfer here yet. Worth naming specifically to Adrian next lesson."
         }
       ]
     },
@@ -84,6 +90,12 @@
           "source": "stats",
           "source_id": "st-2026-09-27-8i-d",
           "note": "First 8i numbers: 25-shot average of 106mph ball speed, 117yd carry, 141yd total. Same ball speed as the earlier 7i block but higher carry/launch/apex despite less loft — cleaner contact as the session progressed, not just a different club."
+        },
+        {
+          "date": "2026-09-27",
+          "source": "stats",
+          "source_id": "st-2026-09-27-driver-d",
+          "note": "First driver numbers: 25-ball transfer block average of 150mph ball speed but only 177yd carry, with a large consistent right curve (avg 38.3yd offline). High ball speed poorly converted to distance — heavy slice spin is the likely cause, not lack of power."
         }
       ]
     }
