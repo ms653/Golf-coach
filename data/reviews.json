@@ -201,6 +201,27 @@
       "verdict": "This is the direct comparison the earlier face-on video couldn't give: from the same angle, a year apart, the transition looks the same -- arms/club initiating before the hips clear, both then and now. That's a genuinely honest answer to 'am I not getting any better': on this specific fault, from this evidence, no clear change is visible over a year. That's worth taking seriously rather than softening, but it also points at what's actually needed -- this fault has been present long enough and through enough unsupervised practice that it's very unlikely to resolve through more range time alone. It needs sustained, coached repetition (ideally checked in most lessons going forward, not just when it comes up), not another solo session.",
       "cues_suggested": ["let the arms drop"],
       "drills_suggested": ["pump-drill", "step-change-of-direction"]
+    },
+    {
+      "id": "r-2026-10-03-a",
+      "date": "2026-10-03",
+      "type": "range-screenshot",
+      "context": "Toptracer screenshots, driver, from a range visit not linked to any planned session. User said \"7 iron and driver\" but only the driver table was fully visible on screen (current club = driver); the dispersion scatter shows a second, 7-iron shot cluster but no numeric table for it was shared, so no 7-iron numbers are logged here.",
+      "linked_lesson_id": null,
+      "linked_session_id": null,
+      "observations": [
+        {
+          "note": "Average carry (221yd) is a real step up from both 9/27 driver blocks (177yd transfer, 193yd pressure test) at the same ball speed as the better of those two (154mph) -- genuine efficiency gain, not just swinging harder. One shot (222yd carry, 55yd offline) was a big slice, but unlike the anomalous reading from 9/27 this one's curve/apex/hang time all scale together consistently, so it reads as a real bad swing rather than a tracking glitch.",
+          "fault_area": "distance-ball-speed-consistency"
+        },
+        {
+          "note": "Every shot missed right again (11.7 to 55.0yd), average 29.0yd right -- same one-directional pattern as both 9/27 driver blocks. The distance gain hasn't come with a dispersion fix; still fully consistent with the arms-before-hips pattern confirmed on video on 9/27 and in the 1-year-old comparison.",
+          "fault_area": "sequencing-over-the-top"
+        }
+      ],
+      "verdict": "Genuinely good distance news on driver -- carry is up meaningfully at comparable ball speed, which wasn't true on 9/27. But the miss pattern (one-way right, matching the known over-the-top path) hasn't moved, exactly as the video evidence predicted it wouldn't from a single session's cueing. Driver now has 8 logged shots with carry and offline both present, past the 5-shot minimum for a data-driven goal -- worth asking for one if useful. If 7-iron numbers get shared too, happy to log those alongside.",
+      "cues_suggested": ["let the arms drop"],
+      "drills_suggested": ["pump-drill", "step-change-of-direction"]
     }
   ]
 }

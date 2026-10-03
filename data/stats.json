@@ -233,6 +233,58 @@
       "apex_ft": 62,
       "offline_yards": 18.3,
       "note": "Toptracer's rolling average across the full 15-ball pressure test block -- the representative number, per the now-established lesson not to over-read a handful of shown shots (especially with one likely-anomalous reading, st-2026-09-27-driver-g, in the visible sample). Offline converted from 55ft right. Notably higher carry/ball speed than the transfer block average (193yd/154mph vs 177yd/150mph), so distance-wise this was the best driver block of the day even though the miss direction was less consistent than the transfer block's one-way right pattern."
+    },
+    {
+      "id": "st-2026-10-03-driver-a",
+      "date": "2026-10-03",
+      "session_id": null,
+      "club": "driver",
+      "ball_speed_mph": 154,
+      "carry_yards": 218,
+      "total_yards": 271,
+      "launch_angle_deg": 13,
+      "apex_ft": 53,
+      "offline_yards": 11.7,
+      "note": "Not linked to a planned session (none created for this date in chat). Offline converted from 35ft; direction arrow wasn't visible on this row (a delete icon sat where it would be), inferred right since curve was right -- flagged as slightly less certain than the other rows."
+    },
+    {
+      "id": "st-2026-10-03-driver-b",
+      "date": "2026-10-03",
+      "session_id": null,
+      "club": "driver",
+      "ball_speed_mph": 149,
+      "carry_yards": 217,
+      "total_yards": 249,
+      "launch_angle_deg": 15,
+      "apex_ft": 72,
+      "offline_yards": 13.3,
+      "note": "Offline converted from 40ft right shown on screen."
+    },
+    {
+      "id": "st-2026-10-03-driver-c",
+      "date": "2026-10-03",
+      "session_id": null,
+      "club": "driver",
+      "ball_speed_mph": 161,
+      "carry_yards": 222,
+      "total_yards": 235,
+      "launch_angle_deg": 12,
+      "apex_ft": 99,
+      "offline_yards": 55.0,
+      "note": "Large miss -- 55yd right, with curve/apex/hang time all scaling together (181ft curve, 99ft apex, 6.2s hang), unlike the one clearly anomalous reading from 9/27 -- this one looks like a real big slice, not a tracking glitch."
+    },
+    {
+      "id": "st-2026-10-03-driver-d",
+      "date": "2026-10-03",
+      "session_id": null,
+      "club": "driver",
+      "ball_speed_mph": 154,
+      "carry_yards": 221,
+      "total_yards": 249,
+      "launch_angle_deg": 13,
+      "apex_ft": 79,
+      "offline_yards": 29.0,
+      "note": "Toptracer's rolling average for this driver session -- the representative number. Offline converted from 87ft right. Carry is well up on both 9/27 driver blocks (177yd transfer, 193yd pressure test) at the same ball speed as the better of the two (154mph) -- real efficiency gain, not just a speed increase. Offline still one-directional right, consistent with the ongoing sequencing fault."
     }
   ]
 }
