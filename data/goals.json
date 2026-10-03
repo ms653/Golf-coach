@@ -1,3 +1,14 @@
 {
-  "goals": []
+  "goals": [
+    {
+      "id": "goal-driver",
+      "club": "driver",
+      "target_carry_yards": 215,
+      "carry_tolerance_yards": 20,
+      "target_dispersion_yards": 30,
+      "created_date": "2026-10-03",
+      "note": "First suggestion, based on 8 individual shots (9/27 + 10/3 combined): mean carry 215.0yd, carry stddev 26.1yd (tolerance = 80% = ~20.9, rounded to 20); mean offline +27.5yd right, offline stddev 36.5yd (dispersion target = 80% = ~29.2, rounded to 30). One shot (st-2026-09-27-driver-g, 332yd carry / 117.3yd offline) was excluded from this calculation -- it was already flagged as a likely mis-tracked reading (physically inconsistent: lower ball speed than other shots yet by far the longest carry) rather than a real swing, and including it would have pulled both numbers out meaningfully. Worth noting the mean offline is +27.5yd (consistently right, not centered at 0) -- the dispersion target itself is symmetric per the schema, but in practice most \"misses\" are going to be on the right side until the sequencing fault is addressed, not evenly split left/right.",
+      "status": "active"
+    }
+  ]
 }
